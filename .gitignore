@@ -5,10 +5,6 @@ Notas_*.xlsx
 **/Nomina_*
 **/entradas/
 **/salida/
-# Evaluaciones aún no aplicadas y sus pautas
-propuestas/03_Actividades/
-**/Pauta_*
-**/*_solucion.*
 # Temporales
 __pycache__/
 *.pyc

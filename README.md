@@ -20,10 +20,9 @@ Este repositorio es público. Quedan fuera, y están en `.gitignore`:
 
 - Nóminas, entregas, notas y observaciones de corrección (datos de estudiantes).
 - Libros y material de terceros (`6_Referencias` y las presentaciones heredadas `00_` a `10_`).
-- Evaluaciones aún no aplicadas y sus pautas (`propuestas/03_Actividades`).
 - Archivos con nombres de estudiantes detectados en una revisión automática: `1_Curso/TEMARIO_CURSO_SR.md`, `2_Clases/Apuntes/Nuevo_Cajetin_Vistas_Cortes/investigacion/normas_cajetin_auxiliares_cortes.md`, `5_Herramientas/Actividad 4/visor/js/escaner/app.js`, `5_Herramientas/corrector/NOTA_ERROR_ZIP.md` y `3_Actividades/Enunciados/ENUNCIADOS.md`. Algunos pueden ser falsos positivos: revisar antes de subirlos.
 
-Si el repositorio pasa a privado, se puede subir el resto.
+Las actividades y sus pautas sí están publicadas, por decisión del docente.
 
 ## Regenerar documentos
 
