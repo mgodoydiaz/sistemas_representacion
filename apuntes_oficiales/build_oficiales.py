@@ -17,11 +17,11 @@ def cabeceras(d, modulo, titulo):
         f = s.footer.paragraphs[0].runs
         f[0].text = "Miguel Godoy"; f[2].text = ""
 
-def portada(d, modulo, titulo):
+def portada(d, modulo, titulo, tag):
     ps = d.paragraphs
     ps[0].runs[0].text = titulo
     for r in ps[0].runs[1:]: r.text = ""
-    ps[1].runs[0].text = f"{modulo} · PCI 1119 Sistemas de Representación"
+    ps[1].runs[0].text = f"Apunte {tag} · {modulo} · PCI 1119 Sistemas de Representación"
     for r in ps[1].runs[1:]: r.text = ""
 
 def guardar(d, mod, nombre):
@@ -44,12 +44,12 @@ def capitulo(i, n, nombre):
     for p in d.paragraphs:  # sube un nivel los encabezados
         if p.style.name == "Heading 2": p.style = d.styles["Heading 1"]
         elif p.style.name == "Heading 3": p.style = d.styles["Heading 2"]
-    portada(d, M1[0], titulo); cabeceras(d, M1[0], titulo)
-    guardar(d, M1, f"M1_{n:02d}_{nombre}")
+    portada(d, M1[0], titulo, f"1_{n}"); cabeceras(d, M1[0], titulo)
+    guardar(d, M1, f"1_{n}_{nombre}")
 
 def existente(ruta, mod, n, nombre, titulo):
-    d = Document(ruta); portada(d, mod[0], titulo); cabeceras(d, mod[0], titulo)
-    guardar(d, mod, f"M{mod[0][7]}_{n:02d}_{nombre}")
+    d = Document(ruta); portada(d, mod[0], titulo, f"{mod[0][7]}_{n}"); cabeceras(d, mod[0], titulo)
+    guardar(d, mod, f"{mod[0][7]}_{n}_{nombre}")
 
 capitulo(0, 1, "Introduccion_a_los_sistemas_de_representacion")
 capitulo(1, 2, "Elementos_del_dibujo")
@@ -57,4 +57,7 @@ capitulo(2, 3, "Vistas_de_un_objeto")
 existente(f"{REPO}/propuestas/02_Apuntes/Apunte_La_Tercera_Vista.docx", M1, 4, "La_tercera_vista", "La tercera vista")
 capitulo(3, 5, "Vistas_auxiliares")
 capitulo(4, 6, "Cortes_y_secciones")
-existente(f"{REPO}/propuestas/02_Apuntes/Apunte_Isometrico_en_AutoCAD.docx", M2, 1, "Dibujo_isometrico_en_AutoCAD", "Dibujo isométrico en AutoCAD")
+F2 = f"{REPO}/apuntes_oficiales/fuentes_modulo2"
+existente(f"{F2}/fuente_AutoCAD_base.docx", M2, 7, "AutoCAD_base", "AutoCAD base")
+existente(f"{REPO}/propuestas/02_Apuntes/Apunte_Isometrico_en_AutoCAD.docx", M2, 8, "Dibujo_isometrico_en_AutoCAD", "Dibujo isométrico en AutoCAD")
+existente(f"{F2}/fuente_Vistas_y_cortes_en_AutoCAD.docx", M2, 9, "Vistas_y_cortes_en_AutoCAD", "Vistas y cortes en AutoCAD")
