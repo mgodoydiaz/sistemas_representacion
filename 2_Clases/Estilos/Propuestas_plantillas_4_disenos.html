@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plantillas de clase — 4 propuestas</title>
+<style>
+:root{ --ui:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+*{box-sizing:border-box}
+body{margin:0;background:#EEF0F2;font-family:var(--ui);color:#22282D;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding:40px 24px 80px}
+h1{font-size:30px;margin:0 0 6px;letter-spacing:-.01em}
+.lead{color:#5A636B;margin:0 0 34px;max-width:66ch;font-size:15px}
+.card{background:#fff;border:1px solid #DCE0E4;border-radius:10px;padding:26px 26px 30px;margin-bottom:34px}
+.card h2{font-size:21px;margin:0 0 2px}
+.card h2 .n{color:#98A0A8;font-weight:400;margin-right:8px}
+.tag{color:#6B747C;font-size:13.5px;margin:0 0 18px}
+.slides{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px}
+.sl{width:480px;height:270px;background:#fff;border:1px solid #C8CDD2;position:relative;overflow:hidden;flex:0 0 auto}
+.meta{display:grid;grid-template-columns:112px 1fr;gap:6px 14px;font-size:13.5px;border-top:1px solid #E6E9EC;padding-top:16px}
+.meta dt{color:#7A828A}
+.meta dd{margin:0}
+.sw{display:inline-block;width:13px;height:13px;border-radius:3px;vertical-align:-2px;margin-right:5px;border:1px solid rgba(0,0,0,.12)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:#F2F4F6;padding:1px 4px;border-radius:3px}
+.note{font-size:13px;color:#6B747C;margin-top:14px;border-left:2px solid #D6DBE0;padding-left:12px}
+.foot{font-size:13px;color:#6B747C;margin-top:30px}
+
+/* ---------- A: Filete ---------- */
+.A{font-family:var(--ui);padding:30px 34px}
+.A .t{color:#1F3B57;font-size:26px;font-weight:700;letter-spacing:-.01em;line-height:1.15}
+.A .rule{height:2px;background:#1F3B57;width:54px;margin:12px 0 14px}
+.A .s{color:#4A5259;font-size:13px}
+.A .kicker{color:#8A949C;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:14px}
+.A ul{margin:0;padding-left:16px;color:#2C3238;font-size:13.5px}
+.A li{margin-bottom:9px}
+.A .pg{position:absolute;bottom:14px;right:20px;color:#98A0A8;font-size:10.5px}
+.A .hl{position:absolute;bottom:14px;left:34px;right:34px;height:1px;background:#D4D9DD}
+
+/* ---------- B: Margen lateral ---------- */
+.B{font-family:Cambria,Georgia,serif}
+.B .col{position:absolute;left:0;top:0;bottom:0;width:96px;border-right:1px solid #E2E7EB}
+.B .col .u{position:absolute;left:22px;top:34px;color:#2E5E8C;font-size:11px;letter-spacing:.1em;font-family:var(--ui);text-transform:uppercase}
+.B .col .num{position:absolute;left:22px;top:56px;color:#2E5E8C;font-size:34px;font-weight:700}
+.B .col .bar{position:absolute;left:22px;bottom:26px;width:2px;top:110px;background:#2E5E8C}
+.B .body{margin-left:96px;padding:34px 32px 30px}
+.B .t{color:#1F2A33;font-size:25px;line-height:1.15}
+.B .s{color:#2E5E8C;font-size:13px;font-family:var(--ui);margin-top:10px}
+.B p,.B li{font-family:Calibri,var(--ui);font-size:13.5px;color:#333A40}
+.B ul{margin:6px 0 0;padding-left:16px}
+.B li{margin-bottom:8px}
+.B .pg{position:absolute;bottom:14px;right:20px;color:#98A0A8;font-size:10.5px;font-family:var(--ui)}
+
+/* ---------- C: Cajetín técnico ---------- */
+.C{font-family:"Segoe UI",var(--ui);padding:16px}
+.C .frame{position:absolute;inset:14px;border:1px solid #17456B}
+.C .grid{position:absolute;inset:15px;background-image:linear-gradient(#EDF1F4 1px,transparent 1px),linear-gradient(90deg,#EDF1F4 1px,transparent 1px);background-size:24px 24px}
+.C .area{position:absolute;left:32px;right:32px;top:40px;bottom:74px}
+.C .t{color:#17456B;font-size:24px;font-weight:600;line-height:1.15}
+.C .s{color:#5C666E;font-size:12.5px;margin-top:8px}
+.C ul{margin:10px 0 0;padding-left:16px;color:#2C3238;font-size:13px}
+.C li{margin-bottom:7px}
+.C .cj{position:absolute;right:14px;bottom:14px;height:52px;width:270px;border-left:1px solid #17456B;border-top:1px solid #17456B;display:grid;grid-template-columns:1fr 1fr 78px;font-size:9px;color:#5C666E;background:#fff}
+.C .cj div{border-right:1px solid #C9D1D7;padding:6px 8px}
+.C .cj div:last-child{border-right:0;color:#17456B;font-family:Consolas,ui-monospace,monospace;font-size:15px;display:flex;align-items:center;justify-content:center}
+.C .cj b{display:block;color:#17456B;font-size:10.5px;font-weight:600;margin-top:2px}
+.C .lbl{position:absolute;left:32px;top:22px;color:#8A949C;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase}
+
+/* ---------- D: Editorial numerada ---------- */
+.D{font-family:"Segoe UI",var(--ui)}
+.D .big{position:absolute;right:26px;top:6px;font-family:Georgia,serif;font-size:132px;color:#DFE3E6;line-height:1;font-weight:700}
+.D .in{position:absolute;left:34px;right:34px;top:34px;bottom:34px}
+.D .t{font-family:Georgia,serif;color:#33556E;font-size:27px;line-height:1.12}
+.D .s{color:#6B6F73;font-size:13px;margin-top:10px;max-width:70%}
+.D .split{display:grid;grid-template-columns:150px 1fr;gap:22px;height:100%}
+.D .lft{border-right:1px solid #DFE3E6;padding-right:18px}
+.D .lft .t{font-size:19px}
+.D .lft .k{color:#8A949C;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:8px}
+.D ul{margin:0;padding-left:16px;color:#2C3238;font-size:13.5px}
+.D li{margin-bottom:9px}
+.D .pg{position:absolute;bottom:12px;right:20px;color:#98A0A8;font-size:10.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Cuatro plantillas para tus clases</h1>
+<p class="lead">Formato 16:9, fondo blanco, una tinta de acento más grises. Todas están pensadas para leerse a distancia en proyección y para imprimirse en blanco y negro sin perder jerarquía: nada de fondos saturados, ningún texto blanco sobre color, cobertura de tinta bajo el 3&nbsp;% de la hoja.</p>
+
+<!-- A -->
+<div class="card">
+  <h2><span class="n">01</span>Filete</h2>
+  <p class="tag">La más neutra. Todo el peso lo lleva la tipografía; el color aparece solo en el titular y en un filete de 54&nbsp;px.</p>
+  <div class="slides">
+    <div class="sl A">
+      <div class="kicker">Sistemas de Representación · PCI1119</div>
+      <div class="t">Proyección ortogonal:<br>el sistema diédrico</div>
+      <div class="rule"></div>
+      <div class="s">Unidad 2 — Clase 5 · Miguel Godoy Díaz</div>
+      <div class="hl"></div><div class="pg">UCT · 2026</div>
+    </div>
+    <div class="sl A">
+      <div class="kicker">Unidad 2 · Diédrico</div>
+      <div class="t" style="font-size:20px">Los tres planos de proyección</div>
+      <div class="rule" style="height:1.5px;margin:10px 0 12px"></div>
+      <ul>
+        <li>Plano horizontal (PH), vertical (PV) y de perfil (PP).</li>
+        <li>La recta de tierra como intersección PH∩PV.</li>
+        <li>Abatimiento: por qué el dibujo cabe en una hoja.</li>
+      </ul>
+      <div class="hl"></div><div class="pg">5</div>
+    </div>
+  </div>
+  <dl class="meta">
+    <dt>Paleta</dt><dd><span class="sw" style="background:#1F3B57"></span><code>#1F3B57</code> azul pizarra (11,5:1) · <span class="sw" style="background:#4A5259"></span><code>#4A5259</code> gris texto (8:1) · <span class="sw" style="background:#D4D9DD"></span><code>#D4D9DD</code> filetes</dd>
+    <dt>Tipografía</dt><dd>Una sola familia: <b>Aptos</b> (o <b>Calibri</b> si tu Office es anterior). Título 32&nbsp;pt bold · antetítulo 11&nbsp;pt versalita · cuerpo 20&nbsp;pt · pie 11&nbsp;pt</dd>
+    <dt>Retícula</dt><dd>Márgenes 2,2&nbsp;cm. Una sola columna. Antetítulo fijo arriba para que el estudiante sepa siempre en qué unidad va.</dd>
+    <dt>Impresión</dt><dd>La más barata de todas. En 6-por-hoja sigue siendo legible porque no depende de fondos.</dd>
+    <dt>Úsala si</dt><dd>Tus clases son mayormente texto y esquemas, y quieres que las imágenes manden.</dd>
+  </dl>
+</div>
+
+<!-- B -->
+<div class="card">
+  <h2><span class="n">02</span>Margen lateral</h2>
+  <p class="tag">Una franja izquierda sin relleno que lleva el número de unidad. Es la que mejor conversa con tus documentos Word, porque usa el mismo par tipográfico y el mismo azul.</p>
+  <div class="slides">
+    <div class="sl B">
+      <div class="col"><div class="u">Unidad</div><div class="num">02</div><div class="bar"></div></div>
+      <div class="body">
+        <div class="t">Proyección ortogonal:<br>el sistema diédrico</div>
+        <div class="s">Sistemas de Representación · PCI1119 · Clase 5</div>
+      </div>
+      <div class="pg">UCT · 2026</div>
+    </div>
+    <div class="sl B">
+      <div class="col"><div class="u">Unidad</div><div class="num">02</div><div class="bar"></div></div>
+      <div class="body">
+        <div class="t" style="font-size:20px">Los tres planos de proyección</div>
+        <ul>
+          <li>Plano horizontal (PH), vertical (PV) y de perfil (PP).</li>
+          <li>La recta de tierra como intersección PH∩PV.</li>
+          <li>Abatimiento: por qué el dibujo cabe en una hoja.</li>
+        </ul>
+      </div>
+      <div class="pg">5</div>
+    </div>
+  </div>
+  <dl class="meta">
+    <dt>Paleta</dt><dd><span class="sw" style="background:#2E5E8C"></span><code>#2E5E8C</code> azul (6,8:1, tu acento habitual) · <span class="sw" style="background:#333A40"></span><code>#333A40</code> texto · <span class="sw" style="background:#E2E7EB"></span><code>#E2E7EB</code> separadores</dd>
+    <dt>Tipografía</dt><dd><b>Cambria</b> en títulos + <b>Calibri</b> en cuerpo. Título 30&nbsp;pt · cuerpo 19&nbsp;pt · rótulos 10&nbsp;pt</dd>
+    <dt>Retícula</dt><dd>Columna izquierda de 3,4&nbsp;cm (solo línea y número) + área de contenido de 21&nbsp;cm. Margen derecho 1,8&nbsp;cm.</dd>
+    <dt>Impresión</dt><dd>La línea vertical le da al alumno un ancla visual al apilar hojas; en B/N la franja se lee como gris medio.</dd>
+    <dt>Úsala si</dt><dd>Quieres que apuntes, guías y diapositivas se vean como una misma familia.</dd>
+  </dl>
+</div>
+
+<!-- C -->
+<div class="card">
+  <h2><span class="n">03</span>Cajetín técnico</h2>
+  <p class="tag">Cada diapositiva es una lámina: marco, retícula tenue y cajetín inferior derecho con asignatura, unidad y número. Es la que más se explica sola en una asignatura de representación.</p>
+  <div class="slides">
+    <div class="sl C">
+      <div class="grid"></div><div class="frame"></div>
+      <div class="area">
+        <div class="lbl">Sistemas de Representación</div>
+        <div class="t" style="margin-top:26px">Proyección ortogonal:<br>el sistema diédrico</div>
+        <div class="s">Unidad 2 · Clase 5 · Miguel Godoy Díaz</div>
+      </div>
+      <div class="cj"><div>Asignatura<b>PCI1119</b></div><div>Unidad<b>02 · Diédrico</b></div><div>05</div></div>
+    </div>
+    <div class="sl C">
+      <div class="grid"></div><div class="frame"></div>
+      <div class="area">
+        <div class="lbl">Unidad 02 · Diédrico</div>
+        <div class="t" style="font-size:19px;margin-top:18px">Los tres planos de proyección</div>
+        <ul>
+          <li>Plano horizontal (PH), vertical (PV) y de perfil (PP).</li>
+          <li>La recta de tierra como intersección PH∩PV.</li>
+          <li>Abatimiento: por qué el dibujo cabe en una hoja.</li>
+        </ul>
+      </div>
+      <div class="cj"><div>Asignatura<b>PCI1119</b></div><div>Lámina<b>Ejercicio 2.1</b></div><div>12</div></div>
+    </div>
+  </div>
+  <dl class="meta">
+    <dt>Paleta</dt><dd><span class="sw" style="background:#17456B"></span><code>#17456B</code> azul Prusia (10:1) · <span class="sw" style="background:#5C666E"></span><code>#5C666E</code> texto secundario · <span class="sw" style="background:#C9D1D7"></span><code>#C9D1D7</code> marcos · <span class="sw" style="background:#EDF1F4"></span><code>#EDF1F4</code> retícula</dd>
+    <dt>Tipografía</dt><dd><b>Segoe UI</b> para títulos y cuerpo + <b>Consolas</b> para numeración, cotas y códigos. Título 28&nbsp;pt semibold · cuerpo 19&nbsp;pt · cajetín 10&nbsp;pt</dd>
+    <dt>Retícula</dt><dd>Marco a 1,2&nbsp;cm del borde; área de dibujo limpia de 22×10&nbsp;cm para axonometrías y perspectivas; cajetín de 7,5×1,6&nbsp;cm.</dd>
+    <dt>Impresión</dt><dd>La retícula está al 6&nbsp;% de gris: se ve en pantalla, casi desaparece en láser B/N. El cajetín funciona como pie de página al archivar.</dd>
+    <dt>Úsala si</dt><dd>Proyectas muchas láminas y ejercicios, y quieres que el estudiante los cite por número.</dd>
+  </dl>
+  <p class="note">Aviso honesto: es la más caracterizada de las cuatro. Gana mucho en esta asignatura, pero no la vas a poder reciclar tal cual en una charla que no sea de dibujo técnico.</p>
+</div>
+
+<!-- D -->
+<div class="card">
+  <h2><span class="n">04</span>Editorial numerada</h2>
+  <p class="tag">Número de sección en gris claro como marca de agua tipográfica y contenido en dos columnas desiguales. La más “libro” de las cuatro.</p>
+  <div class="slides">
+    <div class="sl D">
+      <div class="big">02</div>
+      <div class="in">
+        <div style="position:absolute;bottom:0;left:0;right:0">
+          <div class="t">Proyección ortogonal:<br>el sistema diédrico</div>
+          <div class="s">Sistemas de Representación · PCI1119 · Unidad 2, clase 5</div>
+        </div>
+      </div>
+    </div>
+    <div class="sl D">
+      <div class="in">
+        <div class="split">
+          <div class="lft"><div class="k">Unidad 02</div><div class="t">Los tres planos</div></div>
+          <div>
+            <ul>
+              <li>Plano horizontal (PH), vertical (PV) y de perfil (PP).</li>
+              <li>La recta de tierra como intersección PH∩PV.</li>
+              <li>Abatimiento: por qué el dibujo cabe en una hoja.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="pg">5</div>
+    </div>
+  </div>
+  <dl class="meta">
+    <dt>Paleta</dt><dd><span class="sw" style="background:#33556E"></span><code>#33556E</code> azul acero (7,9:1) · <span class="sw" style="background:#6B6F73"></span><code>#6B6F73</code> gris cálido (5:1) · <span class="sw" style="background:#DFE3E6"></span><code>#DFE3E6</code> número y filetes</dd>
+    <dt>Tipografía</dt><dd><b>Georgia</b> en títulos + <b>Segoe UI</b> en cuerpo. Título 30&nbsp;pt · rótulo lateral 16&nbsp;pt · cuerpo 19&nbsp;pt</dd>
+    <dt>Retícula</dt><dd>Dos columnas 1:2 separadas por filete vertical. El título vive en la columna angosta, lo que deja el bloque grande libre para imágenes a sangre.</dd>
+    <dt>Impresión</dt><dd>El número grande al 12&nbsp;% imprime como gris muy claro; si te preocupa el tóner, se puede desactivar en el patrón.</dd>
+    <dt>Úsala si</dt><dd>Tus clases avanzan por secciones numeradas y usas muchas imágenes grandes.</dd>
+  </dl>
+</div>
+
+<p class="foot">Contrastes indicados sobre blanco según WCAG 2.1. Todos los textos superan 4,5:1; los grises bajo ese umbral (<code>#8A949C</code>, 3,1:1) se usan solo en rótulos decorativos de 10&nbsp;pt o en líneas, nunca en contenido.</p>
+</div>
+</body>
+</html>

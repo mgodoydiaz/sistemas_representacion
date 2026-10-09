@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparacion con pauta &mdash; Sistemas de Representacion</title>
+<link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="css/comparacion.css">
+</head>
+<body>
+
+<header class="barra-superior">
+  <div class="marca">
+    <span class="marca-titulo">Comparacion con pauta</span>
+    <span class="marca-sub">Sistemas de Representacion &middot; Actividad 4</span>
+  </div>
+  <div id="selector-parte-contenedor"></div>
+  <div class="barra-superior-acciones">
+    <input id="buscador-cmp" type="search" placeholder="Buscar usuario..." autocomplete="off">
+    <a href="index.html" class="boton" title="Ir al visor de correccion">Visor</a>
+    <a href="escaner.html" class="boton" title="Abrir el escaner manual de laminas">Escanear</a>
+    <button id="btn-recargar-cmp" class="boton" title="Volver a leer el listado y el manifest">Recargar</button>
+    <span id="fuente-datos-cmp" class="fuente-datos"></span>
+  </div>
+</header>
+
+<div class="cuerpo">
+
+  <aside class="panel-alumnos">
+    <div id="lista-alumnos-cmp" class="lista-alumnos" role="listbox" aria-label="Alumnos"></div>
+    <div id="resumen-general-cmp" class="resumen-general"></div>
+  </aside>
+
+  <main class="panel-principal">
+
+    <div id="cmp-vacio" class="estado-vacio">
+      <p>Selecciona un alumno de la lista para comparar sus laminas contra la pauta.</p>
+    </div>
+
+    <section id="cmp-contenido" class="cmp-contenido oculto">
+
+      <div class="cmp-encabezado">
+        <h2 id="cmp-usuario"></h2>
+        <div id="cmp-tabs-pagina" class="contacto-tabs"></div>
+        <div class="cmp-acciones">
+          <button id="btn-mover-parte-cmp" class="boton boton-chico boton-mover-parte oculto" title="Mueve los archivos de esta hoja a la otra parte en el servidor">Mover esta hoja a la otra parte</button>
+          <button id="btn-comparar-pagina" class="boton">Comparar los 6 cuadros</button>
+        </div>
+      </div>
+
+      <div id="cmp-aviso-pagina" class="cmp-aviso oculto"></div>
+
+      <table class="cmp-tabla">
+        <thead>
+          <tr>
+            <th>Cuadro</th>
+            <th>Parecido con la pauta</th>
+            <th>Desplazamiento para alinear</th>
+            <th>Accion</th>
+          </tr>
+        </thead>
+        <tbody id="cmp-tabla-cuerpo"></tbody>
+      </table>
+
+      <div class="cmp-detalle-y-nota">
+
+        <section class="cmp-detalle">
+          <div id="cmp-detalle-vacio" class="cmp-detalle-vacio">Elige un cuadro de la tabla para ver el mapa de diferencia.</div>
+          <div id="cmp-detalle-contenido" class="oculto">
+            <h3 id="cmp-detalle-titulo"></h3>
+            <div class="cmp-detalle-paneles">
+              <div class="cmp-panel-img">
+                <div class="cmp-panel-etiqueta">Pauta</div>
+                <img id="img-pauta" alt="Trazo de la pauta">
+              </div>
+              <div class="cmp-panel-img">
+                <div class="cmp-panel-etiqueta">Diferencia</div>
+                <img id="img-diferencia" alt="Mapa de diferencia">
+              </div>
+              <div class="cmp-panel-img">
+                <div class="cmp-panel-etiqueta">Alumno</div>
+                <img id="img-alumno" alt="Trazo del alumno">
+              </div>
+            </div>
+            <div class="cmp-leyenda">
+              <span><i class="cmp-muestra" style="background:rgb(120,120,120)"></i> coincide</span>
+              <span><i class="cmp-muestra" style="background:rgb(205,60,55)"></i> el alumno dibujo esto de mas</span>
+              <span><i class="cmp-muestra" style="background:rgb(60,110,210)"></i> le falta al alumno (lo pide la pauta)</span>
+            </div>
+            <div id="cmp-detalle-metricas" class="cmp-metricas"></div>
+          </div>
+        </section>
+
+        <aside class="cmp-panel-nota">
+          <h3>Nota</h3>
+          <p class="cmp-nota-ayuda">El promedio y la nota sugerida usan Parte 1 · Vistas y Parte 2 · Isometricos (6 cuadros cada una). Si a una parte todavia le falta escanearse, se avisa aca en vez de promediar como si estuviera completa. El porcentaje sugiere: la nota final la decide el profesor.</p>
+          <div id="nota-resumen" class="nota-resumen"></div>
+          <label class="cmp-campo">
+            <span>Nota final (0 a 100)</span>
+            <input type="number" id="input-nota-final" min="0" max="100" step="0.1" placeholder="Ej: 65">
+          </label>
+          <label class="cmp-campo">
+            <span>Observaciones</span>
+            <textarea id="input-observaciones" rows="4" placeholder="Comentario para este alumno..."></textarea>
+          </label>
+          <button id="btn-registrar-excel" class="boton boton-primario">Registrar en Excel</button>
+          <div id="nota-estado" class="nota-estado"></div>
+        </aside>
+
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script type="module" src="js/comparacion/app.js"></script>
+</body>
+</html>

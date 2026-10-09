@@ -1,0 +1,16 @@
+# Datos de estudiantes y material con derechos: nunca en un repositorio público
+4_Correcciones/
+6_Referencias/
+Notas_*.xlsx
+**/Nomina_*
+**/entradas/
+**/salida/
+# Evaluaciones aún no aplicadas y sus pautas
+propuestas/03_Actividades/
+**/Pauta_*
+**/*_solucion.*
+# Temporales
+__pycache__/
+*.pyc
+_to_delete/
+~$*

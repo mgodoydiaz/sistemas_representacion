@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escaner manual de laminas &mdash; Sistemas de Representacion</title>
+<link rel="stylesheet" href="css/estilo.css">
+<link rel="stylesheet" href="css/escaner.css">
+</head>
+<body>
+
+<header class="barra-superior">
+  <div class="marca">
+    <span class="marca-titulo">Escaner manual de laminas</span>
+    <span class="marca-sub">Sistemas de Representacion &middot; Actividad 4</span>
+  </div>
+  <div id="selector-parte-contenedor"></div>
+  <div class="barra-superior-acciones">
+    <a href="index.html" class="boton" title="Volver al visor">&larr; Volver al visor</a>
+    <a href="comparacion.html" class="boton" title="Comparar laminas contra la pauta y registrar notas">Comparacion con pauta</a>
+  </div>
+</header>
+
+<div class="escaner-cuerpo">
+
+  <aside class="escaner-panel escaner-panel-izq">
+
+    <div class="controles-grupo">
+      <h3>1. Imagen a rectificar</h3>
+      <div id="zona-arrastre" class="zona-arrastre">
+        <p>Arrastra una foto aqui</p>
+        <p class="controles-ayuda-mini">o</p>
+        <label class="boton boton-chico" for="input-archivo">Elegir archivo...</label>
+        <input id="input-archivo" type="file" accept="image/*" hidden>
+      </div>
+      <label class="control-linea-vert">
+        <span>...o elegir una imagen ya presente en el servidor</span>
+        <select id="select-servidor">
+          <option value="">(cargando lista...)</option>
+        </select>
+      </label>
+      <div id="estado-imagen" class="estado-imagen">Sin imagen cargada.</div>
+    </div>
+
+    <div class="controles-grupo">
+      <h3>2. Destino del escaneo</h3>
+      <div class="modo-escaner-botones" style="margin-bottom: 8px;">
+        <button id="btn-destino-alumno" class="modo-btn activo" type="button">Entrega Alumno</button>
+        <button id="btn-destino-pauta" class="modo-btn" type="button" style="border-color: #2b7de9;">Pauta Oficial Profesor</button>
+      </div>
+      <label class="control-linea-vert" id="fila-usuario">
+        <span>Usuario</span>
+        <input id="campo-usuario" type="text" placeholder="ej: slara2026" autocomplete="off">
+      </label>
+      <label class="control-linea-vert">
+        <span>Pagina</span>
+        <input id="campo-pagina" type="text" value="vistas" autocomplete="off">
+      </label>
+      <p class="controles-ayuda-mini">El nombre de pagina se sincroniza con el selector de parte de arriba (o con el atajo F2). Se puede editar a mano para variantes como "vistas_2" (segunda hoja del mismo tipo) o "desconocida_1" (tipo no reconocible).</p>
+      <div id="aviso-parte-guardado" class="aviso-destacado"></div>
+    </div>
+
+    <div class="controles-grupo">
+      <h3>3. Modo de marcado</h3>
+      <div class="modo-escaner-botones">
+        <button id="btn-modo-hoja" class="modo-btn activo" data-modo="hoja">Hoja completa</button>
+        <button id="btn-modo-cuadro" class="modo-btn" data-modo="cuadro">Cuadro suelto</button>
+      </div>
+      <label class="control-linea-vert oculto" id="fila-numero-cuadro">
+        <span>Numero de cuadro (1 a 6)</span>
+        <select id="select-numero-cuadro">
+          <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+          <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="controles-grupo escaner-log-grupo">
+      <h3>Registro</h3>
+      <div id="log-escaner" class="log-escaner"></div>
+    </div>
+  </aside>
+
+  <main class="escaner-lienzo-area">
+    <div class="escaner-toolbar">
+      <div class="escaner-toolbar-texto">
+        <span class="escaner-paso-titulo">Marcado de esquinas</span>
+        <span class="escaner-instruccion">Clic en orden: superior-izq &rarr; superior-der &rarr; inferior-der &rarr; inferior-izq. Arrastra un punto ya puesto para ajustarlo (o edita sus coordenadas abajo).</span>
+      </div>
+      <div class="escaner-toolbar-botones">
+        <button id="btn-deshacer-punto" class="boton boton-chico" disabled title="Quita el ultimo punto marcado">Deshacer punto</button>
+        <button id="btn-reiniciar-puntos" class="boton boton-chico" disabled title="Borra los 4 puntos">Reiniciar puntos</button>
+        <button id="btn-refinar" class="boton boton-chico" disabled title="Ajusta el cuadrilatero a los bordes reales de la imagen">Refinar bordes</button>
+        <button id="btn-deshacer-refinar" class="boton boton-chico" disabled title="Vuelve al cuadrilatero antes de refinar">Deshacer refinar</button>
+        <span class="escaner-sep"></span>
+        <button id="btn-zoom-menos" class="boton boton-chico" title="Alejar">&minus;</button>
+        <button id="btn-zoom-mas" class="boton boton-chico" title="Acercar">+</button>
+        <button id="btn-ajustar-vista" class="boton boton-chico" title="Ajustar imagen a la ventana">Ajustar</button>
+      </div>
+    </div>
+    <div id="contenedor-lienzo" class="contenedor-lienzo">
+      <canvas id="lienzo-marcado"></canvas>
+      <canvas id="lienzo-lupa" class="lienzo-lupa oculto" width="180" height="180"></canvas>
+      <div id="mensaje-lienzo" class="mensaje-lienzo">Carga una imagen para comenzar.</div>
+    </div>
+    <div class="escaner-tabla-puntos" id="tabla-puntos"></div>
+  </main>
+
+  <aside class="escaner-panel escaner-panel-der">
+
+    <div class="controles-grupo" id="grupo-grilla">
+      <h3>4. Grilla (solo hoja completa)</h3>
+      <label class="control-linea">
+        <span>Margen interior</span>
+        <input type="range" id="ctl-margen" min="0" max="15" step="0.5" value="4">
+        <output id="out-margen">4%</output>
+      </label>
+      <label class="control-linea">
+        <span>Separacion entre cuadros</span>
+        <input type="range" id="ctl-separacion" min="0" max="10" step="0.5" value="2">
+        <output id="out-separacion">2%</output>
+      </label>
+    </div>
+
+    <div class="controles-grupo">
+      <h3>5. Rectificar</h3>
+      <button id="btn-rectificar" class="boton" disabled>Rectificar</button>
+      <div class="escaner-orientacion oculto" id="grupo-orientacion">
+        <p class="controles-ayuda-mini">Rotar / voltear el resultado (por si la hoja quedo al reves o de lado):</p>
+        <div class="botonera-inline">
+          <button id="btn-rot-izq" class="boton boton-chico" title="Rotar -90 grados">&#8634; -90</button>
+          <button id="btn-rot-der" class="boton boton-chico" title="Rotar +90 grados">&#8635; +90</button>
+          <button id="btn-flip-h" class="boton boton-chico" title="Espejo horizontal">&harr; Voltear</button>
+          <button id="btn-flip-v" class="boton boton-chico" title="Espejo vertical">&#8597; Voltear</button>
+        </div>
+        <p class="controles-ayuda-mini">El recuadro celeste con <strong>1</strong> marca donde quedaria el cuadro numero 1.</p>
+      </div>
+    </div>
+
+    <div class="controles-grupo escaner-preview-grupo">
+      <h3>Vista previa del recorte</h3>
+      <div id="contenedor-preview" class="contenedor-preview">
+        <canvas id="lienzo-preview"></canvas>
+        <div id="mensaje-preview" class="mensaje-preview">Aun no rectificado.</div>
+      </div>
+    </div>
+
+    <div class="controles-grupo veredicto-grupo">
+      <h3>6. Guardar</h3>
+      <div id="aviso-parte-guardado-final" class="aviso-destacado"></div>
+      <button id="btn-guardar" class="boton" disabled>Guardar en el servidor</button>
+      <div id="estado-guardado" class="veredicto-estado"></div>
+    </div>
+  </aside>
+
+</div>
+
+<script type="module" src="js/escaner/app.js"></script>
+</body>
+</html>

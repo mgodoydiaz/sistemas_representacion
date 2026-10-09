@@ -1,0 +1,752 @@
+[
+  {
+    "capitulo": 1,
+    "id": "C1-01",
+    "seccion": "1.2",
+    "bloom": "recordar",
+    "enunciado": "¿Cuál es la característica principal que distingue al dibujo técnico del dibujo artístico?",
+    "alternativas": [
+      "Que describe la forma y dimensiones de un objeto sin ambigüedad, mediante reglas normalizadas",
+      "Que se realiza siempre a mano alzada, sin instrumentos",
+      "Que privilegia la expresión estética por sobre la información",
+      "Que admite interpretaciones personales de quien lo observa"
+    ],
+    "correcta": 0,
+    "retro": "El dibujo técnico es un lenguaje normalizado y de interpretación única, a diferencia del dibujo artístico, que es expresivo y de interpretación abierta."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-02",
+    "seccion": "1.3",
+    "bloom": "comprender",
+    "enunciado": "¿Qué significa que la geometría descriptiva sea reversible?",
+    "alternativas": [
+      "Que el mismo dibujo puede leerse indistintamente de adelante hacia atrás",
+      "Que a partir del dibujo plano se puede reconstruir la posición y las dimensiones del objeto original",
+      "Que el objeto se puede girar en cualquier sentido sin perder información",
+      "Que las medidas se invierten según la escala usada"
+    ],
+    "correcta": 1,
+    "retro": "La reversibilidad es la posibilidad de recuperar la posición y las medidas del objeto a partir del dibujo plano, algo que una fotografía no permite."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-03",
+    "seccion": "1.3",
+    "bloom": "recordar",
+    "enunciado": "¿Cuál de las siguientes NO es uno de los tres problemas que resuelve la geometría descriptiva?",
+    "alternativas": [
+      "Representación de puntos, rectas, planos y sólidos",
+      "Posición relativa entre elementos: intersección, paralelismo, perpendicularidad",
+      "Fabricación del objeto en un taller",
+      "Medida o problemas métricos, como la verdadera magnitud"
+    ],
+    "correcta": 2,
+    "retro": "Los tres problemas de la geometría descriptiva son representación, posición y medida; la fabricación es un fin del dibujo técnico, no un problema de la geometría descriptiva."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-04",
+    "seccion": "1.4",
+    "bloom": "recordar",
+    "enunciado": "¿Por qué se conoce a la doble proyección ortogonal como sistema de Monge?",
+    "alternativas": [
+      "Porque inventó el escalímetro para medir sobre planos",
+      "Porque fue el primero en usar la perspectiva cónica en arquitectura",
+      "Porque redactó personalmente la norma ISO 128",
+      "Porque resolvió gráficamente, mediante doble proyección, el cálculo del desenfilado de una fortificación"
+    ],
+    "correcta": 3,
+    "retro": "Monge resolvió con doble proyección ortogonal, en mucho menos tiempo, el cálculo del desenfilado de una fortificación, encargo que dio origen al sistema que lleva su nombre."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-05",
+    "seccion": "1.5",
+    "bloom": "comprender",
+    "enunciado": "Un objeto de ingeniería existe en el espacio real y requiere tres datos para ubicar cada uno de sus puntos. ¿Por qué surge un problema al dibujarlo en una hoja de papel?",
+    "alternativas": [
+      "Porque la hoja es un plano de dos dimensiones y siempre queda una dimensión del objeto por codificar",
+      "Porque el papel no admite escalas de reducción ni de ampliación",
+      "Porque el papel solo permite proyecciones cónicas",
+      "Porque las normas ISO prohíben usar una sola vista"
+    ],
+    "correcta": 0,
+    "retro": "El espacio real es tridimensional y la hoja es bidimensional, de modo que siempre hay una dimensión que debe representarse mediante convenciones como vistas o cortes."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-06",
+    "seccion": "1.6",
+    "bloom": "recordar",
+    "enunciado": "Según el apunte, ¿cuáles son los cuatro elementos de todo sistema de proyección?",
+    "alternativas": [
+      "Punto de fuga, línea de horizonte, objeto y observador",
+      "Punto de vista, objeto proyectado, plano de proyección y rayo proyectante",
+      "Escala, cajetín, vista y corte",
+      "Plano horizontal, plano vertical, plano de perfil y línea de tierra"
+    ],
+    "correcta": 1,
+    "retro": "Todo sistema de proyección tiene cuatro elementos: punto de vista, objeto proyectado, plano de proyección y rayo proyectante."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-07",
+    "seccion": "1.7",
+    "bloom": "comprender",
+    "enunciado": "¿Cuál es la principal diferencia entre la proyección cónica y la cilíndrica?",
+    "alternativas": [
+      "La cónica usa rayos paralelos y la cilíndrica usa rayos convergentes",
+      "Ambas conservan siempre las medidas reales del objeto",
+      "La cónica tiene el punto de vista a distancia finita y deforma las medidas; la cilíndrica tiene el punto de vista en el infinito y conserva las proporciones",
+      "La cilíndrica se usa solo en dibujo artístico y la cónica solo en ingeniería"
+    ],
+    "correcta": 2,
+    "retro": "En la proyección cónica los rayos convergen desde un punto de vista a distancia finita y las medidas se deforman; en la cilíndrica los rayos son paralelos y se conservan las proporciones."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-08",
+    "seccion": "1.7",
+    "bloom": "comprender",
+    "enunciado": "Dentro de la proyección cilíndrica, ¿qué subtipo usa casi exclusivamente el dibujo técnico y por qué?",
+    "alternativas": [
+      "La oblicua, porque muestra mejor la profundidad del objeto",
+      "La cónica, porque conserva el realismo del objeto",
+      "La oblicua, porque no depende de las normas ISO",
+      "La ortogonal, porque es la única que permite medir directamente sobre el dibujo"
+    ],
+    "correcta": 3,
+    "retro": "El dibujo técnico usa casi exclusivamente la proyección cilíndrica ortogonal porque es la única que permite medir directamente sobre el dibujo."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-09",
+    "seccion": "1.7",
+    "bloom": "comprender",
+    "enunciado": "Una sola proyección de un objeto puede corresponder a infinitos objetos distintos. ¿Qué consecuencia práctica tiene esto para el dibujo técnico?",
+    "alternativas": [
+      "Que se necesitan dos o más proyecciones relacionadas entre sí para definir el objeto sin ambigüedad",
+      "Que basta con dibujar una sola vista muy precisa y detallada",
+      "Que solo la proyección cónica resuelve el problema",
+      "Que el objeto debe fotografiarse antes de proyectarse"
+    ],
+    "correcta": 0,
+    "retro": "Como una proyección aislada puede corresponder a infinitos objetos distintos, se necesitan dos o más vistas relacionadas para eliminar la ambigüedad."
+  },
+  {
+    "capitulo": 1,
+    "id": "C1-10",
+    "seccion": "1.8",
+    "bloom": "recordar",
+    "enunciado": "Según el mapa del curso, ¿qué sistema de representación utiliza una vista única que muestra las tres dimensiones a la vez, siendo la isometría su caso más usado?",
+    "alternativas": [
+      "Sistema diédrico",
+      "Proyección axonométrica",
+      "Proyección acotada",
+      "Sistema cónico"
+    ],
+    "correcta": 1,
+    "retro": "La proyección axonométrica usa una vista única que muestra las tres dimensiones a la vez; la isometría es su caso más usado."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-01",
+    "seccion": "2.1",
+    "bloom": "recordar",
+    "enunciado": "En la serie de formatos A (ISO 216), ¿qué ocurre al dividir un formato por la mitad de su lado mayor?",
+    "alternativas": [
+      "Se obtiene un formato con una proporción distinta, que debe reajustarse",
+      "El área se mantiene igual pero el ancho se duplica",
+      "Se obtiene el siguiente formato de la serie, que conserva la misma proporción raíz de 2 a 1",
+      "Se pierde la relación entre los lados y debe corregirse con una escala"
+    ],
+    "correcta": 2,
+    "retro": "La serie A se construye dividiendo el lado mayor por la mitad; el formato resultante conserva la razón raíz de 2 a 1, por lo que el dibujo no se deforma al cambiar de tamaño."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-02",
+    "seccion": "2.1",
+    "bloom": "recordar",
+    "enunciado": "Según ISO 5457, ¿cuánto mide el margen del borde izquierdo, el de archivado, en una lámina A4, a diferencia de los otros tres bordes?",
+    "alternativas": [
+      "10 mm, igual que los demás bordes",
+      "5 mm, la mitad que los demás bordes",
+      "15 mm, para dejar espacio al cajetín",
+      "20 mm, el doble que los otros tres bordes, que miden 10 mm"
+    ],
+    "correcta": 3,
+    "retro": "El recuadro se traza a 10 mm de los cuatro bordes, salvo el izquierdo, de archivado, donde el margen es de 20 mm."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-03",
+    "seccion": "2.2",
+    "bloom": "comprender",
+    "enunciado": "¿Dónde se ubica el cajetín en una lámina y en qué dirección se lee?",
+    "alternativas": [
+      "En la esquina inferior derecha, apoyado en el recuadro, leyéndose en la misma dirección que el dibujo",
+      "En la esquina superior izquierda, separado del recuadro para que no lo tape",
+      "Centrado en la parte inferior de la lámina, sin apoyarse en el recuadro",
+      "En cualquier esquina, siempre que quede visible al plegar la lámina"
+    ],
+    "correcta": 0,
+    "retro": "El cajetín va en la esquina inferior derecha, apoyado en el recuadro, y se lee en la misma dirección que el dibujo; ubicarlo en la esquina superior o separado del recuadro es el error E1."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-04",
+    "seccion": "2.2",
+    "bloom": "recordar",
+    "enunciado": "¿Cuántos campos obligatorios declara la norma ISO 7200:2004 para el cajetín, y qué ancho fija, igual en todos los formatos?",
+    "alternativas": [
+      "Seis campos y 170 mm de ancho",
+      "Ocho campos y 180 mm de ancho",
+      "Cuatro campos y 200 mm de ancho",
+      "Diez campos y 150 mm de ancho"
+    ],
+    "correcta": 1,
+    "retro": "La ISO 7200:2004 declara ocho campos obligatorios y fija un ancho de 180 mm, igual en todos los formatos."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-05",
+    "seccion": "2.2",
+    "bloom": "comprender",
+    "enunciado": "Un estudiante escribe la escala de su plano como 1/2 en el cajetín. ¿Qué corrección corresponde según la norma?",
+    "alternativas": [
+      "Ninguna, es una forma válida de escribir la reducción",
+      "Debe escribirse como porcentaje: 50 %",
+      "Debe escribirse con dos puntos, es decir, 1:2",
+      "Debe escribirse como 2:1, invirtiendo los términos"
+    ],
+    "correcta": 2,
+    "retro": "La escala se escribe siempre con dos puntos, 1:2, nunca como fracción ni como porcentaje; escribirla de otra forma es un error frecuente, E3."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-06",
+    "seccion": "2.2.1",
+    "bloom": "aplicar",
+    "enunciado": "En AutoCAD, un estudiante dibuja el cajetín dentro del espacio modelo y luego lo agranda para que calce con la ventana de la presentación. ¿Cuál es el error y cómo se corrige?",
+    "alternativas": [
+      "No hay error: el cajetín puede ajustarse a cualquier escala",
+      "El error es dibujar en espacio modelo; el cajetín debe estar en la ventana creada con MVIEW",
+      "El error es usar PAGESETUP antes de insertar el cajetín",
+      "El cajetín se escaló; debe dibujarse en la presentación a escala 1, y la escala del dibujo se fija en la ventana con MVIEW"
+    ],
+    "correcta": 3,
+    "retro": "El cajetín vive en la presentación a escala 1 y mantiene siempre el mismo tamaño; la escala del dibujo se ajusta en la ventana, nunca escalando el cajetín, error E5."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-07",
+    "seccion": "2.6",
+    "bloom": "recordar",
+    "enunciado": "Si una arista visible y un eje de simetría coinciden en la misma posición del dibujo, ¿cuál se dibuja?",
+    "alternativas": [
+      "La arista visible, porque tiene mayor jerarquía que el eje",
+      "El eje, porque los ejes siempre sobresalen del contorno",
+      "Ambas, superpuestas",
+      "Ninguna, se debe desplazar una de las dos"
+    ],
+    "correcta": 0,
+    "retro": "La jerarquía de líneas es arista visible, luego arista oculta, luego eje; ante una coincidencia, se dibuja solo la de mayor jerarquía."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-08",
+    "seccion": "2.5",
+    "bloom": "comprender",
+    "enunciado": "En una lámina se elige el grupo de líneas 0,50 y 0,25 mm. ¿Qué relación mantienen la línea gruesa y la fina en ese grupo?",
+    "alternativas": [
+      "Relación 1:1, ambas del mismo grosor",
+      "Relación 2:1, la gruesa mide el doble que la fina",
+      "Relación 3:1",
+      "Relación 4:1"
+    ],
+    "correcta": 1,
+    "retro": "En cada lámina se elige un grupo de líneas donde la gruesa y la fina guardan una relación 2:1, y no se mezcla con otro grupo."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-09",
+    "seccion": "2.7",
+    "bloom": "aplicar",
+    "enunciado": "En un plano dibujado a escala 1:5, un eje que en el papel mide 120 mm, ¿qué longitud real representa?",
+    "alternativas": [
+      "24 mm",
+      "120 mm",
+      "600 mm",
+      "6000 mm"
+    ],
+    "correcta": 2,
+    "retro": "A escala 1:5, la medida real es la del papel multiplicada por 5: 120 mm por 5 es igual a 600 mm."
+  },
+  {
+    "capitulo": 2,
+    "id": "C2-10",
+    "seccion": "2.7",
+    "bloom": "comprender",
+    "enunciado": "¿Por qué el escalímetro se lee directamente sobre la cara correspondiente a la escala usada, en vez de medir y luego dividir?",
+    "alternativas": [
+      "Porque solo admite escalas de ampliación",
+      "Porque el metro no tiene graduaciones intermedias",
+      "Porque la norma ISO exige el uso de un compás en su lugar",
+      "Porque cada una de sus seis graduaciones está calculada para leer directamente una escala, evitando errores de conversión manual"
+    ],
+    "correcta": 3,
+    "retro": "El escalímetro tiene seis caras, cada una graduada para una escala distinta, por lo que la medida real se lee directamente, sin calcular."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-01",
+    "seccion": "3.1",
+    "bloom": "recordar",
+    "enunciado": "En la caja de cristal, ¿qué característica tienen los rayos proyectantes que permite conservar las medidas del objeto?",
+    "alternativas": [
+      "Son paralelos entre sí, sin perspectiva ni fuga",
+      "Convergen en un punto de vista a distancia finita",
+      "Son oblicuos respecto al plano de proyección",
+      "Varían de dirección según la cara observada"
+    ],
+    "correcta": 0,
+    "retro": "En la caja de cristal los rayos proyectantes son paralelos, como en toda proyección cilíndrica ortogonal, por lo que las medidas del objeto se conservan."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-02",
+    "seccion": "3.2",
+    "bloom": "comprender",
+    "enunciado": "¿Qué operación permite que las tres imágenes de la caja de cristal, ubicadas en planos distintos del espacio, terminen sobre una sola hoja?",
+    "alternativas": [
+      "La proyección cónica",
+      "El abatimiento: se fija el plano vertical y los demás se giran 90 grados hasta coincidir con él",
+      "El escalado de cada vista a una proporción distinta",
+      "La superposición directa de los tres planos sin girarlos"
+    ],
+    "correcta": 1,
+    "retro": "El abatimiento deja fijo el plano vertical y gira los otros planos 90 grados hasta hacerlos coincidir con él, como si se desplegara la caja de cristal."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-03",
+    "seccion": "3.2",
+    "bloom": "recordar",
+    "enunciado": "En el arreglo normalizado de vistas en primer diedro, ¿dónde queda ubicada la planta respecto del alzado?",
+    "alternativas": [
+      "A la derecha del alzado, alineada horizontalmente",
+      "Arriba del alzado, alineada verticalmente",
+      "Debajo del alzado, alineada verticalmente",
+      "A la izquierda del alzado, sin alineación"
+    ],
+    "correcta": 2,
+    "retro": "En primer diedro la planta cae debajo del alzado, alineada verticalmente con él."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-04",
+    "seccion": "3.4",
+    "bloom": "aplicar",
+    "enunciado": "De una pieza se pueden dibujar dos vistas frontales posibles: una muestra más aristas ocultas que la otra. Según los criterios del apunte, ¿cuál conviene elegir como alzado?",
+    "alternativas": [
+      "Cualquiera de las dos, el alzado no se elige por ese criterio",
+      "La que tenga más aristas ocultas, porque muestra más información",
+      "La que se vea mejor en isometría, sin considerar las ocultas",
+      "La que presente menos aristas ocultas, además de ser la que más informa sobre la forma de la pieza"
+    ],
+    "correcta": 3,
+    "retro": "El alzado se elige, en orden, por ser la vista que más informa sobre la forma y la que presenta menos aristas ocultas."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-05",
+    "seccion": "3.5",
+    "bloom": "comprender",
+    "enunciado": "¿Cuál es la diferencia esencial entre primer y tercer diedro?",
+    "alternativas": [
+      "En primer diedro la vista se dibuja al lado opuesto de donde se mira; en tercer diedro, del mismo lado",
+      "En primer diedro se usan tres vistas y en tercer diedro solo dos",
+      "El tercer diedro es exclusivo de piezas simétricas",
+      "El primer diedro no usa símbolo de proyección en el cajetín"
+    ],
+    "correcta": 0,
+    "retro": "En primer diedro, usado en Chile, la vista queda al lado opuesto de donde se mira; en tercer diedro, usado en EE.UU. y Canadá, queda del mismo lado."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-06",
+    "seccion": "3.6",
+    "bloom": "aplicar",
+    "enunciado": "En una pieza dibujada en primer diedro, una arista vertical visible en el alzado debe ubicarse también en la planta. ¿Cómo se traslada correctamente esa correspondencia?",
+    "alternativas": [
+      "Se vuelve a medir en la planta con una regla independiente",
+      "Se prolonga la arista vertical desde el alzado hacia la planta, sin volver a medir",
+      "Se calcula por trigonometría a partir del perfil",
+      "Se transfiere con la recta auxiliar a 45 grados, igual que entre planta y perfil"
+    ],
+    "correcta": 1,
+    "retro": "Alzado y planta comparten los anchos: toda arista vertical del alzado se prolonga directamente a la planta, sin medir dos veces la misma dimensión."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-07",
+    "seccion": "3.6",
+    "bloom": "aplicar",
+    "enunciado": "Para transferir una profundidad entre la planta y el perfil de una pieza, ¿qué procedimiento es correcto según el apunte?",
+    "alternativas": [
+      "Medir la profundidad por separado en cada vista con el escalímetro",
+      "Prolongar horizontales directamente entre ambas vistas",
+      "Usar el compás o la recta auxiliar a 45 grados, porque planta y perfil comparten las profundidades",
+      "Calcular la profundidad a partir de las alturas del alzado"
+    ],
+    "correcta": 2,
+    "retro": "Planta y perfil comparten las profundidades, que se transfieren con compás o con la recta auxiliar a 45 grados, evitando medir dos veces."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-08",
+    "seccion": "3.7",
+    "bloom": "recordar",
+    "enunciado": "¿Qué representa una línea de trazo y punto fina en una vista diédrica?",
+    "alternativas": [
+      "Una arista oculta que no se ve desde esa dirección",
+      "El límite de una vista parcial o rotura",
+      "El contorno visible de la pieza",
+      "Un eje de simetría, de agujero o de revolución"
+    ],
+    "correcta": 3,
+    "retro": "La línea de trazo y punto fina representa ejes de simetría, de agujeros o de revolución, y sobresale de 3 a 5 mm del contorno."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-09",
+    "seccion": "3.8",
+    "bloom": "comprender",
+    "enunciado": "En una isometría de lectura, ¿qué ocurre con una circunferencia del objeto real?",
+    "alternativas": [
+      "Aparece deformada como una elipse, salvo que se use un método especial de construcción",
+      "Se dibuja siempre como circunferencia, igual que en las vistas diédricas",
+      "Desaparece, porque la isometría no representa curvas",
+      "Se transforma en un cuadrado por la proyección a 120 grados"
+    ],
+    "correcta": 0,
+    "retro": "En la isometría solo las líneas paralelas a los ejes se miden directamente; las circunferencias aparecen como elipses porque están en planos oblicuos al de proyección."
+  },
+  {
+    "capitulo": 3,
+    "id": "C3-10",
+    "seccion": "3.8",
+    "bloom": "aplicar",
+    "enunciado": "Un estudiante necesita conocer la medida exacta de un ángulo de la pieza y solo cuenta con la isometría de lectura. ¿Qué debe hacer?",
+    "alternativas": [
+      "Medir directamente sobre la isometría con el escalímetro",
+      "Recurrir a las vistas diédricas, alzado, planta y perfil, porque la isometría no da medidas confiables de elementos oblicuos",
+      "Girar la isometría 30 grados y medir de nuevo",
+      "Usar la isometría solo si el ángulo es de 90 grados"
+    ],
+    "correcta": 1,
+    "retro": "La isometría es una vista de lectura; las medidas confiables las dan las vistas diédricas, ya que en la isometría las líneas oblicuas se deforman."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-01",
+    "seccion": "4.1",
+    "bloom": "comprender",
+    "enunciado": "¿Por qué las vistas principales no bastan para mostrar en verdadera magnitud una cara inclinada de una pieza?",
+    "alternativas": [
+      "Porque las vistas principales solo sirven para piezas simétricas",
+      "Porque las caras inclinadas no pueden acotarse nunca",
+      "Porque ninguna vista principal es paralela a la cara inclinada, por lo que esta se proyecta deformada",
+      "Porque las vistas principales solo muestran aristas ocultas"
+    ],
+    "correcta": 2,
+    "retro": "Las vistas principales solo muestran en verdadera magnitud las caras paralelas a los planos de proyección; una cara inclinada se deforma en todas ellas."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-02",
+    "seccion": "4.2",
+    "bloom": "recordar",
+    "enunciado": "¿Cuál es la condición necesaria para poder proyectar una vista auxiliar desde una vista principal?",
+    "alternativas": [
+      "Que la pieza sea simétrica respecto a un eje",
+      "Que la cara inclinada tenga un agujero circular",
+      "Que la vista principal muestre la mayor cantidad de aristas ocultas",
+      "Que la cara inclinada se vea de canto, como una línea, en esa vista principal"
+    ],
+    "correcta": 3,
+    "retro": "La condición de uso de la vista auxiliar es que la cara inclinada se vea de canto en una vista principal; desde ahí se proyecta."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-03",
+    "seccion": "4.2",
+    "bloom": "comprender",
+    "enunciado": "Un estudiante intenta obtener la vista auxiliar de una cara inclinada proyectando desde la planta, donde esa cara se ve como un rectángulo deformado, no de canto. ¿Qué ocurre?",
+    "alternativas": [
+      "No se obtiene la verdadera magnitud, porque la proyección debe hacerse desde la vista donde la cara está de canto",
+      "Se obtiene igual la verdadera magnitud, solo que rotada 90 grados",
+      "El resultado es correcto, porque cualquier vista sirve como origen",
+      "Se obtiene una vista auxiliar parcial válida, pero sin rotular"
+    ],
+    "correcta": 0,
+    "retro": "Si se proyecta desde una vista donde la cara no está de canto, no se obtiene la verdadera magnitud; ese es el error E9 del apunte."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-04",
+    "seccion": "4.3",
+    "bloom": "aplicar",
+    "enunciado": "Al construir una vista auxiliar, el primer paso es identificar la arista de canto en la vista principal. Si un estudiante traza la línea de referencia sin fijarse primero en esa arista, ¿qué consecuencia probable señala el apunte?",
+    "alternativas": [
+      "Ninguna, la línea de referencia puede trazarse en cualquier dirección",
+      "La cara vuelve a salir deformada, porque la línea de referencia no queda paralela a la arista de canto",
+      "La vista auxiliar queda con líneas ocultas de más",
+      "El agujero de la pieza desaparece en la vista auxiliar"
+    ],
+    "correcta": 1,
+    "retro": "Si la línea de referencia no es paralela a la arista de canto, paso 1, la cara sale deformada otra vez; es el error E6 del apunte."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-05",
+    "seccion": "4.3",
+    "bloom": "aplicar",
+    "enunciado": "En el paso 3 del procedimiento de vista auxiliar, las proyectantes se trazan perpendiculares a la arista de canto. Si un estudiante las traza sin apoyar la escuadra en esa arista y quedan ligeramente inclinadas, ¿qué problema resulta?",
+    "alternativas": [
+      "La profundidad transferida será mayor que la real",
+      "El agujero pasará de ser circular a cuadrado",
+      "La vista auxiliar queda corrida o torcida, porque las proyectantes no son perpendiculares",
+      "No hay problema, siempre que la línea de referencia esté bien trazada"
+    ],
+    "correcta": 2,
+    "retro": "Proyectantes no perpendiculares a la arista de canto producen una vista auxiliar corrida o torcida; error E7, evitable apoyando la escuadra en la arista."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-06",
+    "seccion": "4.3",
+    "bloom": "aplicar",
+    "enunciado": "Para completar el paso 4 del procedimiento, llevar la profundidad a la vista auxiliar, un estudiante transfiere el alto de la pieza en lugar de la profundidad. ¿Qué error cometió y cuál es la regla para evitarlo?",
+    "alternativas": [
+      "Ningún error: alto y profundidad son intercambiables en la vista auxiliar",
+      "Confundió el ancho con la profundidad, que se transfieren igual",
+      "Debió transferir el alto desde el perfil, no desde la planta",
+      "Transfirió la medida equivocada; la regla es llevar la medida que no se ve en la vista de canto, es decir, la profundidad, medida desde la línea de referencia"
+    ],
+    "correcta": 3,
+    "retro": "El error E8 es transferir el ancho o el alto en vez de la profundidad; la tabla del paso 4 indica llevar la medida que no se ve en la vista de canto."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-07",
+    "seccion": "4.4",
+    "bloom": "comprender",
+    "enunciado": "¿Por qué la vista auxiliar se dibuja habitualmente en forma parcial, mostrando solo la cara inclinada?",
+    "alternativas": [
+      "Porque el resto de la pieza saldría deformado en esa proyección y no aporta información útil",
+      "Porque la norma ISO 128-3 prohíbe dibujar vistas auxiliares completas",
+      "Porque una vista parcial requiere menos instrumentos de dibujo",
+      "Porque así se evita usar línea de referencia"
+    ],
+    "correcta": 0,
+    "retro": "Se dibuja solo la cara inclinada porque el resto de la pieza, proyectado sobre ese plano, saldría deformado y saturaría la lámina sin aportar; dibujarla completa es el error E10."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-08",
+    "seccion": "4.4",
+    "bloom": "recordar",
+    "enunciado": "¿Cuándo debe llevar rótulo, flecha y letra, una vista auxiliar?",
+    "alternativas": [
+      "Siempre, sin excepción",
+      "Solo cuando se desplaza a otro lugar de la lámina, distinto de su alineación con la vista de origen",
+      "Solo cuando la pieza tiene más de un agujero",
+      "Nunca, porque el rótulo es exclusivo de las vistas cortadas"
+    ],
+    "correcta": 1,
+    "retro": "Si la vista auxiliar queda alineada con su vista de origen no lleva rótulo; si se desplaza, se indica con flecha y letra mayúscula, ISO 128-3."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-09",
+    "seccion": "4.6",
+    "bloom": "comprender",
+    "enunciado": "¿Qué idea resume la regla de oro del capítulo de vistas auxiliares?",
+    "alternativas": [
+      "Toda vista auxiliar debe dibujarse completa para no perder información",
+      "La línea de referencia se traza después de las proyectantes",
+      "Una cara solo se ve en verdadera magnitud cuando se mira perpendicularmente a ella; primero hay que buscarla de canto",
+      "La profundidad se mide siempre en la vista auxiliar, nunca en la planta"
+    ],
+    "correcta": 2,
+    "retro": "La regla de oro del capítulo es que una cara solo se ve en verdadera magnitud al mirarla perpendicularmente; por eso el primer paso es ubicarla de canto."
+  },
+  {
+    "capitulo": 4,
+    "id": "C4-10",
+    "seccion": "4.7",
+    "bloom": "aplicar",
+    "enunciado": "El apunte señala que el procedimiento de vista auxiliar, aplicado a rectas y planos, anticipa un método posterior del sistema diédrico. ¿Cuál es ese método?",
+    "alternativas": [
+      "El abatimiento de planos de proyección",
+      "El rayado de superficies cortadas",
+      "La construcción de la isometría de lectura",
+      "El cambio de plano, usado para hallar verdaderas magnitudes"
+    ],
+    "correcta": 3,
+    "retro": "El apunte indica que este mismo procedimiento, aplicado a rectas y planos, es el cambio de plano que se usará para hallar verdaderas magnitudes."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-01",
+    "seccion": "5.2",
+    "bloom": "comprender",
+    "enunciado": "¿Cuál es la diferencia entre corte y sección según el apunte?",
+    "alternativas": [
+      "El corte representa lo que toca el plano más lo que se ve detrás de él; la sección representa solo la figura que el plano deja sobre la pieza",
+      "El corte y la sección son sinónimos, solo cambia el nombre",
+      "La sección muestra lo que hay detrás del plano y el corte solo la superficie cortada",
+      "El corte se usa en piezas macizas y la sección en piezas huecas"
+    ],
+    "correcta": 0,
+    "retro": "Corte es lo que toca el plano más lo que se ve detrás; sección es solo la figura que el plano deja sobre la pieza; confundirlo es el error E11."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-02",
+    "seccion": "5.3",
+    "bloom": "recordar",
+    "enunciado": "En la indicación de un corte, ¿qué tipo de línea se usa para la traza del plano de corte?",
+    "alternativas": [
+      "Continua fina, sin refuerzos",
+      "Trazo y punto fino, con tramos gruesos en los extremos y en los cambios de dirección",
+      "Trazos, igual que las aristas ocultas",
+      "Continua gruesa en todo su recorrido"
+    ],
+    "correcta": 1,
+    "retro": "La traza del plano de corte es una línea de trazo y punto fina, con tramos gruesos en los extremos y en los cambios de dirección, según ISO 128-3."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-03",
+    "seccion": "5.3",
+    "bloom": "aplicar",
+    "enunciado": "En la planta de una pieza se indica el corte A-A con flechas apuntando hacia arriba en el papel. ¿Qué significa esto para la vista cortada?",
+    "alternativas": [
+      "Que la vista cortada debe ubicarse debajo de la planta",
+      "Que las flechas están mal dibujadas, porque siempre deben apuntar hacia abajo",
+      "Que se está mirando hacia arriba, y la vista cortada A-A corresponde a esa dirección de observación",
+      "Que el corte es un semicorte, no un corte total"
+    ],
+    "correcta": 2,
+    "retro": "La flecha indica la dirección en que se mira; si apunta hacia arriba, la vista cortada A-A muestra lo que se ve mirando en esa dirección; invertirla es el error E16."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-04",
+    "seccion": "5.4",
+    "bloom": "recordar",
+    "enunciado": "¿A qué ángulo se dibuja el rayado de una vista cortada respecto del contorno principal, en el caso general?",
+    "alternativas": [
+      "90 grados",
+      "30 grados",
+      "60 grados",
+      "45 grados, salvo que el contorno esté a 45 grados, caso en que se usa 30 o 60 grados"
+    ],
+    "correcta": 3,
+    "retro": "El rayado se traza a 45 grados del contorno principal; si el contorno ya está a 45 grados, se usa 30 o 60 grados para que se distinga, ISO 128-3, cláusula 7."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-05",
+    "seccion": "5.4",
+    "bloom": "aplicar",
+    "enunciado": "Al rayar la vista cortada de una placa con un agujero pasante, un estudiante extiende el rayado también dentro del agujero. ¿Qué corresponde corregir?",
+    "alternativas": [
+      "Quitar el rayado del agujero, porque solo se raya el material que toca el plano de corte, no los huecos",
+      "Nada, el agujero también debe rayarse para indicar que fue perforado",
+      "Cambiar la dirección del rayado dentro del agujero a 90 grados",
+      "Rayar el agujero con líneas más gruesas que el resto"
+    ],
+    "correcta": 0,
+    "retro": "El rayado indica dónde había material; los huecos quedan en blanco. Rayarlos es el error E13."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-06",
+    "seccion": "5.5",
+    "bloom": "aplicar",
+    "enunciado": "Una pieza es simétrica respecto a un eje y se necesita mostrar su interior y su exterior en una sola vista, ahorrando trazos. ¿Qué tipo de corte conviene usar?",
+    "alternativas": [
+      "Corte total",
+      "Semicorte, con las mitades separadas por el eje",
+      "Corte por planos paralelos",
+      "Corte parcial"
+    ],
+    "correcta": 1,
+    "retro": "El semicorte es la elección adecuada para piezas simétricas: una mitad se dibuja en vista exterior y la otra cortada, separadas por el eje, nunca por línea gruesa."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-07",
+    "seccion": "5.5",
+    "bloom": "aplicar",
+    "enunciado": "En un semicorte, un estudiante dibuja la línea que separa la mitad en vista de la mitad cortada como línea continua gruesa. ¿Qué problema genera este trazo?",
+    "alternativas": [
+      "Ninguno, es la forma correcta de separar las mitades",
+      "Hace que el rayado se vea más tenue de lo normal",
+      "Se lee como si fuera una arista real de la pieza, cuando en realidad debe ser el eje de simetría",
+      "Impide que se pueda acotar la pieza en esa zona"
+    ],
+    "correcta": 2,
+    "retro": "La línea que separa las mitades del semicorte debe ser el eje, trazo y punto fino; dibujarla gruesa la hace parecer una arista real, error E17."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-08",
+    "seccion": "5.6",
+    "bloom": "comprender",
+    "enunciado": "¿Qué diferencia el contorno de una sección abatida del de una sección desplazada?",
+    "alternativas": [
+      "La abatida siempre lleva rótulo B-B y la desplazada nunca",
+      "La abatida se dibuja fuera de la vista y la desplazada dentro de ella",
+      "Ambas usan contorno grueso, pero en lugares distintos de la lámina",
+      "La abatida se dibuja con contorno fino sobre la misma vista, sin rótulo; la desplazada, con contorno grueso fuera de la vista y con rótulo"
+    ],
+    "correcta": 3,
+    "retro": "Confundir el contorno de ambas secciones es el error E19: abatida es fino, en el lugar, sin rótulo; desplazada es grueso, fuera, rotulada."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-09",
+    "seccion": "5.7",
+    "bloom": "aplicar",
+    "enunciado": "En el corte longitudinal de un conjunto formado por un árbol macizo, una chaveta y un buje exterior, ¿qué elementos deben quedar sin rayar aunque el plano de corte pase por su eje?",
+    "alternativas": [
+      "El árbol y la chaveta, porque son elementos macizos que no se cortan longitudinalmente",
+      "Solo el buje exterior, porque es la pieza de mayor diámetro",
+      "Todos los elementos deben rayarse por igual, incluida la chaveta",
+      "Ninguno; el rayado se aplica siempre que el plano atraviese la pieza"
+    ],
+    "correcta": 0,
+    "retro": "Ejes, árboles macizos, chavetas, pernos, pasadores y nervios no se cortan longitudinalmente; rayarlos es el error E18, porque parecen fundidos con la pieza que los rodea."
+  },
+  {
+    "capitulo": 5,
+    "id": "C5-10",
+    "seccion": "5.8",
+    "bloom": "aplicar",
+    "enunciado": "Un eje macizo de 600 mm de largo se dibuja acortado con una rotura para ahorrar espacio en la lámina. ¿Qué medida debe indicar la cota de longitud?",
+    "alternativas": [
+      "La longitud dibujada después de la rotura, por ejemplo 120 mm",
+      "La longitud real del eje, 600 mm, independientemente de cuánto se haya acortado el dibujo",
+      "El promedio entre la longitud dibujada y la real",
+      "No se acota, porque la rotura elimina la necesidad de cotizar"
+    ],
+    "correcta": 1,
+    "retro": "La cota siempre indica la medida real del objeto, nunca la del papel; acotar la longitud dibujada en un eje con rotura es el error E20."
+  }
+]

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pauta Actividad 2 — Sistemas de Representación</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+  <header class="cabecera">
+    <h1>Pauta — Actividad 2</h1>
+    <p class="subtitulo">Sistemas de Representación · Obtención de vistas</p>
+  </header>
+
+  <div class="contenedor">
+
+    <nav id="selector" class="selector" aria-label="Selector de ejercicio"></nav>
+
+    <main class="visor">
+      <div class="visor-etiqueta">
+        <span id="etiqueta-nivel">—</span>
+        <span id="etiqueta-numero"></span>
+      </div>
+      <div class="visor-imagen" id="visor-imagen">
+        <img id="imagen-pauta" alt="Selecciona un ejercicio de la izquierda" src="">
+        <p class="visor-mensaje">Selecciona un ejercicio de la izquierda para ver su pauta.</p>
+      </div>
+      <p class="visor-ayuda">Usa las flechas ← → para moverte entre ejercicios del mismo nivel, ↑ ↓ para cambiar de nivel.</p>
+    </main>
+
+  </div>
+
+  <script src="js/datos.js"></script>
+  <script src="js/visor.js"></script>
+</body>
+</html>

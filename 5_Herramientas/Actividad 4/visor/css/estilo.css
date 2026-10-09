@@ -1,0 +1,769 @@
+/* Visor de entregas - estilo sobrio para uso prolongado */
+
+:root {
+  --fondo: #e9ebee;
+  --fondo-panel: #f6f7f8;
+  --fondo-lienzo: #cfd2d6;
+  --borde: #c3c7cc;
+  --borde-fuerte: #9aa0a7;
+  --texto: #1d2126;
+  --texto-suave: #565d66;
+  --acento: #2b5f8a;
+  --acento-suave: #dce8f2;
+  --correcto: #2e7d46;
+  --correcto-bg: #e3f4e7;
+  --parcial: #a06a10;
+  --parcial-bg: #fbedd3;
+  --incorrecto: #b23b3b;
+  --incorrecto-bg: #fbe3e1;
+  --alerta-bg: #fff3cd;
+  --alerta-borde: #e0b23d;
+  --pauta-color: 60, 110, 210;   /* azul */
+  --alumno-color: 205, 60, 55;  /* rojo */
+  --fuente: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: var(--fuente);
+  font-size: 14px;
+}
+
+button, input, textarea {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ---------- Barra superior ---------- */
+
+.barra-superior {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 8px 16px;
+  background: #1d2126;
+  color: #eef1f4;
+  flex: 0 0 auto;
+}
+
+.marca-titulo { font-weight: 600; font-size: 15px; margin-right: 8px; }
+.marca-sub { color: #b6bdc6; font-size: 12px; }
+
+.barra-superior-acciones {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#buscador {
+  padding: 5px 9px;
+  border-radius: 4px;
+  border: 1px solid #454c55;
+  background: #2a2f36;
+  color: #eef1f4;
+  width: 180px;
+}
+#buscador::placeholder { color: #8a919b; }
+
+.fuente-datos {
+  font-size: 11px;
+  color: #97a0aa;
+  margin-left: 4px;
+  white-space: nowrap;
+}
+
+.boton {
+  background: #2f3540;
+  color: #eef1f4;
+  border: 1px solid #454c55;
+  border-radius: 4px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+.boton:hover { background: #3a4150; }
+.boton:active { background: #22262c; }
+.boton:disabled { opacity: .45; cursor: not-allowed; }
+
+/* ---------- Cuerpo / layout ---------- */
+
+.cuerpo {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+.panel-alumnos {
+  flex: 0 0 250px;
+  border-right: 1px solid var(--borde-fuerte);
+  background: var(--fondo-panel);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.lista-alumnos {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.alumno-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 8px 9px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 3px;
+  border: 1px solid transparent;
+}
+.alumno-item:hover { background: #e3e6ea; }
+.alumno-item.seleccionado {
+  background: var(--acento-suave);
+  border-color: var(--acento);
+}
+.alumno-nombre {
+  font-weight: 600;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.alumno-meta {
+  font-size: 11px;
+  color: var(--texto-suave);
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-block;
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.chip-ok { background: var(--correcto-bg); color: var(--correcto); }
+.chip-aviso { background: var(--alerta-bg); color: #8a6a10; border: 1px solid var(--alerta-borde); }
+.chip-fallo { background: var(--incorrecto-bg); color: var(--incorrecto); }
+.chip-corregido { background: var(--acento); color: #fff; }
+.chip-pendiente { background: #e2e5e9; color: var(--texto-suave); }
+
+.marca-check {
+  width: 8px; height: 8px; border-radius: 50%;
+  display: inline-block;
+  background: #b8bec6;
+  flex: 0 0 auto;
+}
+.marca-check.completo { background: var(--correcto); }
+.marca-check.parcial { background: var(--parcial); }
+
+.resumen-general {
+  flex: 0 0 auto;
+  border-top: 1px solid var(--borde);
+  padding: 8px 10px;
+  font-size: 11px;
+  color: var(--texto-suave);
+  max-height: 130px;
+  overflow-y: auto;
+}
+.resumen-general table { width: 100%; border-collapse: collapse; }
+.resumen-general td { padding: 1px 2px; }
+
+/* ---------- Panel principal ---------- */
+
+.panel-principal {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.estado-vacio {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--texto-suave);
+}
+
+.oculto { display: none !important; }
+
+/* ---------- Vista de contacto ---------- */
+
+.vista-contacto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 18px;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.contacto-encabezado {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.contacto-encabezado h2 { margin: 0; font-size: 17px; }
+
+.contacto-tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.contacto-tabs button {
+  border: 1px solid var(--borde-fuerte);
+  background: #fff;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.contacto-tabs button.activo { background: var(--acento); color: #fff; border-color: var(--acento); }
+
+.contacto-avisos { display: flex; gap: 6px; flex-wrap: wrap; }
+.aviso-pill {
+  background: var(--alerta-bg);
+  border: 1px solid var(--alerta-borde);
+  color: #6b5100;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 11.5px;
+}
+.aviso-pill.fallo { background: var(--incorrecto-bg); border-color: var(--incorrecto); color: #7a2323; }
+
+.contacto-grilla {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  flex: 1;
+  min-height: 0;
+}
+
+.cuadro-celda {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--borde-fuerte);
+  border-radius: 6px;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+.cuadro-celda:hover { border-color: var(--acento); box-shadow: 0 0 0 2px var(--acento-suave) inset; }
+.cuadro-celda canvas, .cuadro-celda img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+.cuadro-numero {
+  position: absolute;
+  top: 5px; left: 6px;
+  background: rgba(29,33,38,.75);
+  color: #fff;
+  font-size: 11px;
+  padding: 1px 6px;
+  border-radius: 3px;
+}
+.cuadro-veredicto-badge {
+  position: absolute;
+  bottom: 5px; right: 6px;
+  font-size: 10.5px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.cuadro-veredicto-badge.correcto { background: var(--correcto-bg); color: var(--correcto); }
+.cuadro-veredicto-badge.parcial { background: var(--parcial-bg); color: var(--parcial); }
+.cuadro-veredicto-badge.incorrecto { background: var(--incorrecto-bg); color: var(--incorrecto); }
+.cuadro-celda.vacio { background: repeating-linear-gradient(45deg,#f1f2f4,#f1f2f4 10px,#e7e9eb 10px,#e7e9eb 20px); }
+.cuadro-aviso-mini {
+  position: absolute; top: 5px; right: 6px;
+  background: var(--alerta-bg);
+  border: 1px solid var(--alerta-borde);
+  color: #6b5100;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* ---------- Comparador ---------- */
+
+.vista-comparador {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.comparador-encabezado {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 14px;
+  background: var(--fondo-panel);
+  border-bottom: 1px solid var(--borde-fuerte);
+  flex-wrap: wrap;
+}
+.boton-volver { font-weight: 600; }
+.comparador-titulo { font-weight: 600; display: flex; gap: 10px; align-items: baseline; }
+#comp-cuadro-info { font-weight: 400; color: var(--texto-suave); font-size: 12px; }
+
+.comp-modos { display: flex; gap: 4px; margin-left: auto; }
+.modo-btn {
+  border: 1px solid var(--borde-fuerte);
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12.5px;
+}
+.modo-btn.activo { background: var(--acento); color: #fff; border-color: var(--acento); }
+
+.comparador-navegacion { display: flex; align-items: center; gap: 8px; }
+#comp-nav-indicador { font-size: 12.5px; color: var(--texto-suave); min-width: 60px; text-align: center; }
+
+.comparador-cuerpo {
+  flex: 1;
+  display: flex;
+  min-height: 0;
+}
+
+.comparador-lienzo {
+  flex: 1 1 auto;
+  min-width: 0;
+  background: var(--fondo-lienzo);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.modo-vista {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+/* Los modos de un solo lienzo (superposicion, diferencia) centran su canvas
+   cuadrado dentro del espacio disponible. Los modos de dos paneles (lado a
+   lado, cortina) deben ESTIRARSE para llenar todo el alto: si se centraran
+   como los anteriores, los paneles colapsarian a su altura de contenido
+   (0) porque sus hijos flex no tendrian una altura de la cual partir. */
+#modo-1, #modo-3, #modo-4 {
+  align-items: center;
+  justify-content: center;
+}
+#modo-2 {
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.modo-lado-a-lado {
+  width: 100%;
+  height: 100%;
+}
+
+#canvas-superpos, #canvas-diferencia {
+  max-width: 92%;
+  max-height: 92%;
+  background: #d7dade;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  cursor: default;
+}
+
+.modo-lado-a-lado {
+  display: flex;
+  gap: 2px;
+}
+.lado-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.lado-etiqueta {
+  text-align: center;
+  font-size: 11px;
+  color: var(--texto-suave);
+  background: #dcdfe3;
+  padding: 3px;
+}
+.lado-viewport {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+  background: #d7dade;
+  cursor: grab;
+}
+.lado-viewport:active { cursor: grabbing; }
+.lado-viewport canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  transform-origin: 0 0;
+}
+
+.modo-cortina { position: relative; }
+.cortina-contenedor {
+  position: relative;
+  max-width: 92%;
+  max-height: 92%;
+  aspect-ratio: 1 / 1;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+}
+.cortina-contenedor canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: #d7dade;
+}
+.cortina-recorte {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: 50%;
+  overflow: hidden;
+}
+.cortina-recorte canvas {
+  position: absolute;
+  top: 0; left: 0;
+  max-width: none;
+}
+.cortina-barra {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.4);
+  cursor: ew-resize;
+  transform: translateX(-2px);
+}
+.cortina-barra::after {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 22px; height: 22px;
+  background: #fff;
+  border: 1px solid var(--borde-fuerte);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.aviso-cuadro {
+  position: absolute;
+  top: 10px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--alerta-bg);
+  border: 1px solid var(--alerta-borde);
+  color: #6b5100;
+  padding: 6px 14px;
+  border-radius: 5px;
+  font-size: 12.5px;
+  z-index: 5;
+  max-width: 80%;
+  text-align: center;
+}
+.aviso-cuadro.fallo { background: var(--incorrecto-bg); border-color: var(--incorrecto); color: #7a2323; }
+
+/* ---------- Panel de controles ---------- */
+
+.panel-controles {
+  flex: 0 0 270px;
+  background: var(--fondo-panel);
+  border-left: 1px solid var(--borde-fuerte);
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.controles-grupo {
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  padding: 9px 10px;
+  background: #fff;
+}
+.controles-grupo h3 {
+  margin: 0 0 7px 0;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--texto-suave);
+}
+
+/* Las filas con slider se apilan en grid (etiqueta arriba, control abajo)
+   para que quepan comodamente en el panel angosto de un notebook: con
+   flexbox en una sola linea, etiquetas largas como "Opacidad superposicion"
+   empujaban el slider y el valor fuera del area visible. */
+.control-linea {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: "etiqueta etiqueta" "control valor";
+  align-items: center;
+  column-gap: 8px;
+  row-gap: 3px;
+  margin-bottom: 8px;
+  font-size: 12.5px;
+}
+.control-linea span { grid-area: etiqueta; color: var(--texto-suave); }
+.control-linea input[type="range"] { grid-area: control; width: 100%; min-width: 0; }
+.control-linea output { grid-area: valor; min-width: 42px; text-align: right; font-variant-numeric: tabular-nums; }
+
+.control-check {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.control-check span { color: var(--texto); }
+
+.botonera-inline { display: flex; gap: 6px; }
+.boton-chico { padding: 3px 8px; font-size: 11.5px; }
+
+.controles-ayuda-mini { font-size: 11px; color: var(--texto-suave); margin: 0 0 6px; }
+.ajuste-info {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  background: #eef0f2;
+  border-radius: 4px;
+  padding: 4px 7px;
+  margin-bottom: 6px;
+}
+
+.veredicto-grupo { border-color: var(--borde-fuerte); }
+.veredicto-botones { display: flex; gap: 6px; margin-bottom: 8px; }
+.veredicto-btn {
+  flex: 1;
+  border: 1px solid var(--borde-fuerte);
+  background: #fff;
+  padding: 7px 4px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+}
+.veredicto-btn kbd {
+  background: rgba(0,0,0,.08);
+  border-radius: 3px;
+  padding: 0 4px;
+  font-size: 10px;
+  margin-left: 3px;
+}
+.veredicto-btn.correcto.activo { background: var(--correcto); color: #fff; border-color: var(--correcto); }
+.veredicto-btn.parcial.activo { background: var(--parcial); color: #fff; border-color: var(--parcial); }
+.veredicto-btn.incorrecto.activo { background: var(--incorrecto); color: #fff; border-color: var(--incorrecto); }
+
+#comentario {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 12.5px;
+}
+.veredicto-estado {
+  font-size: 11px;
+  color: var(--texto-suave);
+  margin-top: 5px;
+  min-height: 14px;
+}
+
+kbd {
+  border: 1px solid #b7bcc2;
+  border-bottom-width: 2px;
+  border-radius: 3px;
+  padding: 0 5px;
+  font-size: 11px;
+  background: #fff;
+}
+
+/* ---------- Ayuda de atajos (pie) ---------- */
+
+.ayuda-atajos {
+  flex: 0 0 auto;
+  background: #1d2126;
+  color: #d8dde3;
+  border-top: 1px solid #000;
+}
+.ayuda-toggle {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #cfd5db;
+  padding: 5px 14px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 11.5px;
+}
+.ayuda-toggle:hover { background: #2a2f36; }
+.ayuda-contenido {
+  padding: 4px 16px 10px;
+}
+.ayuda-contenido.plegado { display: none; }
+.ayuda-contenido table { border-collapse: collapse; font-size: 11.5px; width: 100%; }
+.ayuda-contenido td { padding: 2px 8px 2px 0; color: #cfd5db; }
+.ayuda-contenido td:nth-child(2), .ayuda-contenido td:nth-child(4) { color: #97a0aa; }
+
+/* ---------- Responsive para notebook 1366 ---------- */
+
+@media (max-width: 1400px) {
+  .panel-alumnos { flex-basis: 220px; }
+  .panel-controles { flex-basis: 245px; }
+}
+
+@media (max-width: 1250px) {
+  .panel-controles { flex-basis: 220px; padding: 9px; }
+  .control-linea span { min-width: 78px; }
+}
+
+/* ---------- Selector global de parte (Parte 1 · Vistas / Parte 2 · Isometricos) ---------- */
+/* Presente y con el mismo aspecto en las tres paginas (index/escaner/comparacion),
+   siempre visible en la barra superior. Ver js/partes.js. */
+
+.selector-parte {
+  display: flex;
+  gap: 2px;
+  background: #12151a;
+  border: 1px solid #454c55;
+  border-radius: 5px;
+  padding: 2px;
+}
+.selector-parte-btn {
+  background: transparent;
+  color: #b6bdc6;
+  border: none;
+  border-radius: 3px;
+  padding: 5px 11px;
+  font-size: 12.5px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.selector-parte-btn:hover { background: #2a2f36; color: #eef1f4; }
+.selector-parte-btn.activo { background: var(--acento); color: #fff; }
+
+/* Misma pareja de botones, mas grande, usada como "pestañas" locales en el
+   encabezado de una pagina (por ejemplo comparacion.html): representan la
+   MISMA eleccion que el selector global, asi que se ven distintas ubicaciones
+   del mismo control, no un filtro aparte. */
+.selector-parte-tabs {
+  display: flex;
+  gap: 6px;
+}
+.selector-parte-tabs .selector-parte-btn {
+  background: #fff;
+  color: var(--texto);
+  border: 1px solid var(--borde-fuerte);
+  padding: 6px 14px;
+  font-size: 13px;
+}
+.selector-parte-tabs .selector-parte-btn:hover { background: #eef0f2; }
+.selector-parte-tabs .selector-parte-btn.activo { background: var(--acento); color: #fff; border-color: var(--acento); }
+.selector-parte-tabs .selector-parte-btn { display: flex; flex-direction: column; align-items: center; gap: 2px; line-height: 1.2; }
+.selector-parte-tab-sub { font-size: 10.5px; font-weight: 400; opacity: .85; }
+
+.nota-fila-discrepancia td { color: var(--incorrecto); font-weight: 600; }
+
+/* ---------- Dialogo de confirmacion modal (js/dialogo.js) ---------- */
+
+.dialogo-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 17, 20, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+.dialogo-caja {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px 22px;
+  max-width: 460px;
+  width: 100%;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+.dialogo-titulo { margin: 0 0 10px; font-size: 15.5px; }
+.dialogo-mensaje { margin: 0 0 18px; font-size: 13.5px; line-height: 1.5; color: var(--texto); }
+.dialogo-botones { display: flex; justify-content: flex-end; gap: 8px; }
+.dialogo-botones .boton { padding: 7px 14px; }
+
+/* Variante de dialogo/aviso para una discrepancia de tipo detectada por el
+   servidor: mas llamativa que un aviso comun, con dos acciones claras. */
+.dialogo-caja.dialogo-alerta { border-top: 4px solid var(--incorrecto); }
+.dialogo-caja.dialogo-alerta .dialogo-titulo { color: var(--incorrecto); }
+
+/* ---------- Doble indicador de partes en la lista de alumnos ---------- */
+
+.indicador-partes { display: inline-flex; gap: 3px; vertical-align: middle; }
+.indicador-parte {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  font-size: 9.5px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--borde-fuerte);
+  color: #fff;
+  line-height: 1;
+}
+.indicador-parte-sin_escanear { background: #e2e5e9; color: var(--texto-suave); border-style: dashed; }
+.indicador-parte-escaneada { background: var(--acento); }
+.indicador-parte-comparada { background: #2e8f82; border-color: #2e8f82; }
+.indicador-parte-con_nota { background: var(--correcto); border-color: var(--correcto); }
+.indicador-parte-sospechosa { box-shadow: 0 0 0 2px var(--incorrecto); }
+
+/* ---------- Boton de reetiquetado ("mover a la otra parte") ---------- */
+
+.boton-mover-parte {
+  border-color: var(--incorrecto);
+  color: var(--incorrecto);
+  background: #fff;
+}
+.boton-mover-parte:hover { background: var(--incorrecto-bg); }
+
+/* ---------- Banner de "vas a guardar como..." (escaner) y avisos de
+   discrepancia de tipo (comparacion) ---------- */
+
+.aviso-destacado {
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12.5px;
+  line-height: 1.45;
+  border: 1px solid var(--borde-fuerte);
+  background: #eef0f2;
+  color: var(--texto);
+}
+.aviso-destacado strong { font-weight: 700; }
+.aviso-destacado.ok { background: var(--correcto-bg); border-color: var(--correcto); color: #17512c; }
+.aviso-destacado.alerta { background: var(--alerta-bg); border-color: var(--alerta-borde); color: #6b5100; }
+.aviso-destacado.error { background: var(--incorrecto-bg); border-color: var(--incorrecto); color: #7a2323; }
+.aviso-destacado-acciones { margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap; }

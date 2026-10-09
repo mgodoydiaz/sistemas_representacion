@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Visor de entregas &mdash; Sistemas de Representacion</title>
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<header class="barra-superior">
+  <div class="marca">
+    <span class="marca-titulo">Visor de entregas</span>
+    <span class="marca-sub">Sistemas de Representacion &middot; Actividad 4</span>
+  </div>
+  <div id="selector-parte-contenedor"></div>
+  <div class="barra-superior-acciones">
+    <input id="buscador" type="search" placeholder="Buscar usuario..." autocomplete="off">
+    <a href="escaner.html" class="boton" title="Abrir el escaner manual de laminas">Escanear</a>
+    <a href="comparacion.html" class="boton" title="Comparar laminas contra la pauta y registrar notas">Comparacion con pauta</a>
+    <button id="btn-recargar-datos" class="boton" title="Volver a leer manifest.json (por si el escaner guardo algo nuevo)">Recargar datos</button>
+    <button id="btn-exportar-csv" class="boton" title="Exportar CSV">Exportar CSV</button>
+    <button id="btn-exportar-json" class="boton" title="Exportar JSON">Exportar JSON</button>
+    <button id="btn-importar-json" class="boton" title="Importar JSON">Importar JSON</button>
+    <input id="input-importar" type="file" accept="application/json" hidden>
+    <span id="fuente-datos" class="fuente-datos"></span>
+  </div>
+</header>
+
+<div class="cuerpo">
+
+  <aside class="panel-alumnos">
+    <div id="lista-alumnos" class="lista-alumnos" role="listbox" aria-label="Alumnos"></div>
+    <div id="resumen-general" class="resumen-general"></div>
+  </aside>
+
+  <main class="panel-principal">
+
+    <div id="vacio-inicial" class="estado-vacio">
+      <p>Selecciona un alumno de la lista para revisar sus laminas.</p>
+    </div>
+
+    <section id="vista-contacto" class="vista-contacto oculto">
+      <div class="contacto-encabezado">
+        <h2 id="contacto-usuario"></h2>
+        <div id="contacto-tabs" class="contacto-tabs"></div>
+        <button id="btn-mover-parte" class="boton boton-chico boton-mover-parte oculto" title="Mueve los archivos de esta hoja a la otra parte en el servidor">Mover esta hoja a la otra parte</button>
+        <div id="contacto-avisos" class="contacto-avisos"></div>
+      </div>
+      <div id="contacto-grilla" class="contacto-grilla"></div>
+    </section>
+
+    <section id="vista-comparador" class="vista-comparador oculto">
+      <div class="comparador-encabezado">
+        <button id="btn-volver" class="boton boton-volver" title="Volver a la vista de contacto (Esc)">&larr; Volver</button>
+        <div class="comparador-titulo">
+          <span id="comp-usuario"></span>
+          <span id="comp-cuadro-info"></span>
+        </div>
+        <div id="comp-modos" class="comp-modos">
+          <button data-modo="1" class="modo-btn activo">1 Superposicion</button>
+          <button data-modo="2" class="modo-btn">2 Lado a lado</button>
+          <button data-modo="3" class="modo-btn">3 Cortina</button>
+          <button data-modo="4" class="modo-btn">4 Diferencia</button>
+        </div>
+        <div class="comparador-navegacion">
+          <button id="btn-cuadro-prev" class="boton" title="Cuadro anterior (p / &larr;)">&larr;</button>
+          <span id="comp-nav-indicador"></span>
+          <button id="btn-cuadro-next" class="boton" title="Cuadro siguiente (n / &rarr;)">&rarr;</button>
+        </div>
+      </div>
+
+      <div class="comparador-cuerpo">
+
+        <div class="comparador-lienzo">
+          <div id="aviso-cuadro" class="aviso-cuadro oculto"></div>
+
+          <div id="modo-1" class="modo-vista">
+            <canvas id="canvas-superpos" width="1000" height="1000"></canvas>
+          </div>
+
+          <div id="modo-2" class="modo-vista oculto modo-lado-a-lado">
+            <div class="lado-panel">
+              <div class="lado-etiqueta">Pauta</div>
+              <div class="lado-viewport" id="viewport-pauta">
+                <canvas id="canvas-lado-pauta" width="1000" height="1000"></canvas>
+              </div>
+            </div>
+            <div class="lado-panel">
+              <div class="lado-etiqueta">Alumno</div>
+              <div class="lado-viewport" id="viewport-alumno">
+                <canvas id="canvas-lado-alumno" width="1000" height="1000"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <div id="modo-3" class="modo-vista oculto modo-cortina">
+            <div class="cortina-contenedor" id="cortina-contenedor">
+              <canvas id="canvas-cortina-pauta" width="1000" height="1000"></canvas>
+              <div class="cortina-recorte" id="cortina-recorte">
+                <canvas id="canvas-cortina-alumno" width="1000" height="1000"></canvas>
+              </div>
+              <div class="cortina-barra" id="cortina-barra"></div>
+            </div>
+          </div>
+
+          <div id="modo-4" class="modo-vista oculto">
+            <canvas id="canvas-diferencia" width="1000" height="1000"></canvas>
+          </div>
+
+        </div>
+
+        <aside class="panel-controles">
+
+          <div class="controles-grupo">
+            <h3>Opacidad / color</h3>
+            <label class="control-linea">
+              <span>Opacidad superposicion</span>
+              <input type="range" id="ctl-opacidad" min="0" max="100" value="50">
+              <output id="out-opacidad">50%</output>
+            </label>
+          </div>
+
+          <div class="controles-grupo">
+            <h3>Grosor de trazo</h3>
+            <label class="control-linea">
+              <span>Alumno</span>
+              <input type="range" id="ctl-grosor-alumno" min="0" max="6" step="1" value="0">
+              <output id="out-grosor-alumno">0 px</output>
+            </label>
+            <label class="control-linea">
+              <span>Pauta</span>
+              <input type="range" id="ctl-grosor-pauta" min="0" max="6" step="1" value="0">
+              <output id="out-grosor-pauta">0 px</output>
+            </label>
+          </div>
+
+          <div class="controles-grupo">
+            <h3>Trazo</h3>
+            <label class="control-linea">
+              <span>Umbral alfa</span>
+              <input type="range" id="ctl-umbral" min="0" max="255" step="1" value="10">
+              <output id="out-umbral">10</output>
+            </label>
+            <label class="control-linea control-check">
+              <input type="checkbox" id="ctl-fondo" checked>
+              <span>Mostrar fondo (gris)</span>
+            </label>
+            <label class="control-linea control-check">
+              <input type="checkbox" id="ctl-invertir">
+              <span>Invertir trazo alumno</span>
+            </label>
+            <div class="control-linea">
+              <span>Rotar alumno</span>
+              <div class="botonera-inline">
+                <button id="btn-rotar-izq" class="boton boton-chico" title="Rotar -90 grados">&#8634; -90</button>
+                <button id="btn-rotar-der" class="boton boton-chico" title="Rotar +90 grados">&#8635; +90</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="controles-grupo">
+            <h3>Ajuste fino del alumno</h3>
+            <p class="controles-ayuda-mini">&uarr;/&darr;: mover vertical. Alt+&larr;/&rarr;: mover horizontal. Shift = paso de 10px. +/&minus;: escalar. 0: reiniciar. r: rotar.</p>
+            <div id="ajuste-info" class="ajuste-info">dx=0 dy=0 escala=1.00</div>
+            <button id="btn-reset-ajuste" class="boton boton-chico">Reiniciar ajuste</button>
+          </div>
+
+          <div class="controles-grupo veredicto-grupo">
+            <h3>Veredicto del cuadro</h3>
+            <div class="veredicto-botones">
+              <button data-veredicto="correcto" class="veredicto-btn correcto" title="Correcto (a)">Correcto <kbd>a</kbd></button>
+              <button data-veredicto="parcial" class="veredicto-btn parcial" title="Parcial (s)">Parcial <kbd>s</kbd></button>
+              <button data-veredicto="incorrecto" class="veredicto-btn incorrecto" title="Incorrecto (d)">Incorrecto <kbd>d</kbd></button>
+            </div>
+            <textarea id="comentario" rows="3" placeholder="Comentario para este cuadro..."></textarea>
+            <div class="veredicto-estado" id="veredicto-estado"></div>
+          </div>
+
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="ayuda-atajos">
+  <button id="btn-ayuda-toggle" class="ayuda-toggle">Atajos de teclado &#9660;</button>
+  <div id="ayuda-contenido" class="ayuda-contenido plegado">
+    <table>
+      <tr><td><kbd>1</kbd>&ndash;<kbd>4</kbd></td><td>Cambiar modo de comparacion</td>
+          <td><kbd>a</kbd> <kbd>s</kbd> <kbd>d</kbd></td><td>Veredicto correcto / parcial / incorrecto</td></tr>
+      <tr><td><kbd>n</kbd> / <kbd>&rarr;</kbd></td><td>Cuadro siguiente</td>
+          <td><kbd>p</kbd> / <kbd>&larr;</kbd></td><td>Cuadro anterior</td></tr>
+      <tr><td><kbd>&uarr;</kbd> <kbd>&darr;</kbd></td><td>Ajuste fino: mover alumno vertical</td>
+          <td><kbd>Alt</kbd>+<kbd>&larr;</kbd>/<kbd>&rarr;</kbd></td><td>Ajuste fino: mover alumno horizontal</td></tr>
+      <tr><td><kbd>+</kbd> / <kbd>-</kbd></td><td>Escalar alumno</td>
+          <td><kbd>0</kbd></td><td>Reiniciar ajuste fino</td></tr>
+      <tr><td><kbd>r</kbd></td><td>Rotar alumno 90 grados</td>
+          <td><kbd>Esc</kbd></td><td>Volver a la vista de contacto</td></tr>
+      <tr><td><kbd>Rueda</kbd></td><td>Zoom en modo lado a lado (sincronizado)</td>
+          <td><kbd>Arrastrar</kbd></td><td>Mover vista / cortina segun el modo</td></tr>
+      <tr><td><kbd>F2</kbd></td><td>Alternar entre Parte 1 · Vistas y Parte 2 · Isometricos</td>
+          <td></td><td></td></tr>
+    </table>
+  </div>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

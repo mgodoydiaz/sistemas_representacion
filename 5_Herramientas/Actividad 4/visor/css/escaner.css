@@ -1,0 +1,236 @@
+/* escaner.css - estilos propios del escaner manual de laminas. Se carga
+   despues de estilo.css y reutiliza sus variables/clases (--acento,
+   .boton, .controles-grupo, .control-linea, etc). */
+
+.escaner-cuerpo {
+  flex: 1 1 auto;
+  display: flex;
+  min-height: 0;
+}
+
+.escaner-panel {
+  flex: 0 0 280px;
+  background: var(--fondo-panel);
+  padding: 10px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.escaner-panel-izq { border-right: 1px solid var(--borde-fuerte); }
+.escaner-panel-der { border-left: 1px solid var(--borde-fuerte); flex-basis: 300px; }
+
+@media (max-width: 1400px) {
+  .escaner-panel { flex-basis: 250px; }
+  .escaner-panel-der { flex-basis: 265px; }
+}
+
+/* ---------- Controles verticales (etiqueta arriba, input abajo) ---------- */
+
+.control-linea-vert {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 9px;
+  font-size: 12.5px;
+}
+.control-linea-vert span { color: var(--texto-suave); }
+.control-linea-vert input[type="text"],
+.control-linea-vert select {
+  border: 1px solid var(--borde-fuerte);
+  border-radius: 4px;
+  padding: 5px 7px;
+  background: #fff;
+  width: 100%;
+}
+
+/* ---------- Zona de carga de imagen ---------- */
+
+.zona-arrastre {
+  border: 2px dashed var(--borde-fuerte);
+  border-radius: 6px;
+  padding: 14px 10px;
+  text-align: center;
+  margin-bottom: 10px;
+  background: #fff;
+}
+.zona-arrastre p { margin: 2px 0; font-size: 12.5px; color: var(--texto-suave); }
+.zona-arrastre.arrastrando-encima {
+  border-color: var(--acento);
+  background: var(--acento-suave);
+}
+
+.estado-imagen {
+  font-size: 11.5px;
+  color: var(--texto-suave);
+  background: #eef0f2;
+  border-radius: 4px;
+  padding: 5px 7px;
+  line-height: 1.4;
+}
+.estado-imagen.error { background: var(--incorrecto-bg); color: var(--incorrecto); }
+.estado-imagen.ok { background: var(--correcto-bg); color: var(--correcto); }
+
+/* ---------- Modo hoja/cuadro ---------- */
+
+.modo-escaner-botones { display: flex; gap: 6px; margin-bottom: 8px; }
+.modo-escaner-botones .modo-btn { flex: 1; text-align: center; }
+
+/* ---------- Registro (log) ---------- */
+
+.escaner-log-grupo { flex: 1 1 auto; min-height: 90px; display: flex; flex-direction: column; }
+.log-escaner {
+  flex: 1;
+  overflow-y: auto;
+  font-size: 11.5px;
+  font-family: ui-monospace, Consolas, monospace;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 6px;
+  min-height: 70px;
+  max-height: 220px;
+}
+.log-escaner .linea-log { padding: 1px 0; border-bottom: 1px dotted #e3e5e8; }
+.log-escaner .linea-log.error { color: var(--incorrecto); }
+.log-escaner .linea-log.ok { color: var(--correcto); }
+.log-escaner .linea-log.aviso { color: #8a6a10; }
+
+/* ---------- Area central: lienzo de marcado ---------- */
+
+.escaner-lienzo-area {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--fondo-lienzo);
+}
+
+.escaner-toolbar {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 7px 12px;
+  background: var(--fondo-panel);
+  border-bottom: 1px solid var(--borde-fuerte);
+}
+.escaner-toolbar-texto { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.escaner-paso-titulo { font-weight: 600; font-size: 13px; }
+.escaner-instruccion { font-size: 11.5px; color: var(--texto-suave); }
+.escaner-toolbar-botones { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.escaner-sep { width: 1px; align-self: stretch; background: var(--borde-fuerte); margin: 0 2px; }
+
+.contenedor-lienzo {
+  flex: 1 1 auto;
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  background:
+    linear-gradient(45deg, #c3c7cc 25%, transparent 25%),
+    linear-gradient(-45deg, #c3c7cc 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #c3c7cc 75%),
+    linear-gradient(-45deg, transparent 75%, #c3c7cc 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+  background-color: var(--fondo-lienzo);
+}
+#lienzo-marcado {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+#lienzo-marcado.modo-mover { cursor: grab; }
+#lienzo-marcado.arrastrando-punto { cursor: grabbing; }
+
+.lienzo-lupa {
+  position: absolute;
+  top: 0; left: 0;
+  border-radius: 50%;
+  box-shadow: 0 2px 10px rgba(0,0,0,.5);
+  pointer-events: none;
+  z-index: 6;
+}
+
+.mensaje-lienzo {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  color: #555c66;
+  font-size: 13px;
+  background: rgba(255,255,255,.85);
+  padding: 10px 16px;
+  border-radius: 6px;
+  pointer-events: none;
+}
+.mensaje-lienzo.oculto { display: none; }
+
+.escaner-tabla-puntos {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 6px 12px;
+  background: var(--fondo-panel);
+  border-top: 1px solid var(--borde);
+  font-size: 11.5px;
+}
+.escaner-tabla-puntos .punto-fila {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  padding: 3px 6px;
+}
+.escaner-tabla-puntos .punto-fila .punto-etiqueta {
+  font-weight: 600;
+  min-width: 92px;
+  color: var(--texto-suave);
+}
+.escaner-tabla-puntos .punto-fila input[type="number"] {
+  width: 68px;
+  border: 1px solid var(--borde);
+  border-radius: 3px;
+  padding: 2px 4px;
+}
+
+/* ---------- Panel derecho: grilla / orientacion / preview ---------- */
+
+.escaner-orientacion { margin-top: 8px; }
+.escaner-orientacion .botonera-inline { flex-wrap: wrap; margin-bottom: 6px; }
+
+.escaner-preview-grupo { flex: 1 1 auto; min-height: 220px; display: flex; flex-direction: column; }
+.contenedor-preview {
+  position: relative;
+  flex: 1;
+  min-height: 180px;
+  background: var(--fondo-lienzo);
+  border: 1px solid var(--borde);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* width/height "auto" junto a max-width/max-height es lo que permite que
+   un elemento reemplazado (canvas, igual que img) se escale PRESERVANDO
+   su proporcion dentro del contenedor: sin esto, el ancho y el alto se
+   recortan cada uno por separado contra el contenedor y el resultado sale
+   deformado/recortado. */
+#lienzo-preview { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+.mensaje-preview {
+  position: absolute;
+  color: var(--texto-suave);
+  font-size: 12px;
+  text-align: center;
+  padding: 0 10px;
+}
+.mensaje-preview.oculto { display: none; }
+
+#btn-rectificar, #btn-guardar { width: 100%; padding: 8px; font-weight: 600; }
